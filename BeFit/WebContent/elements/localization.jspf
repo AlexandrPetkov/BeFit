@@ -1,0 +1,96 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<fmt:setLocale value="${sessionScope.local}"/>
+	<fmt:setBundle basename="resources.local" var = "loc"/>
+	
+	<fmt:message bundle="${loc}" key="header.changeLocale.message" var="changeLocaleButton"/>
+	<fmt:message bundle="${loc}" key="header.home" var="home"/>
+	<fmt:message bundle="${loc}" key="header.ourTrainers" var="ourTrainers"/>
+	<fmt:message bundle="${loc}" key="header.ourPupils" var="ourPupils"/>
+	<fmt:message bundle="${loc}" key="header.contacts" var="contacts"/>
+	<fmt:message bundle="${loc}" key="header.cabinet" var="cabinet"/>
+	<fmt:message bundle="${loc}" key="header.signOut" var="signOut"/>
+	<fmt:message bundle="${loc}" key="header.signInUp" var="signInUp"/>
+	
+	<fmt:message bundle="${loc}" key="index.tagline" var="tagline"/>
+	<fmt:message bundle="${loc}" key="index.hello" var="hello"/>
+	<fmt:message bundle="${loc}" key="index.callToAction" var="callToAction"/>
+	<fmt:message bundle="${loc}" key="index.siteDescription" var="siteDescription"/>
+	<fmt:message bundle="${loc}" key="index.reasons" var="reasons"/>
+	<fmt:message bundle="${loc}" key="index.reason_1.title" var="reason_1_title"/>
+	<fmt:message bundle="${loc}" key="index.reason_1.description" var="reason_1_description"/>
+	<fmt:message bundle="${loc}" key="index.reason_2.title" var="reason_2_title"/>
+	<fmt:message bundle="${loc}" key="index.reason_2.description" var="reason_2_description"/>
+	<fmt:message bundle="${loc}" key="index.reason_3.title" var="reason_3_title"/>
+	<fmt:message bundle="${loc}" key="index.reason_3.description" var="reason_3_description"/>
+	<fmt:message bundle="${loc}" key="index.reason_4.title" var="reason_4_title"/>
+	<fmt:message bundle="${loc}" key="index.reason_4.description" var="reason_4_description"/>
+	
+	<fmt:message bundle="${loc}" key="signin.signin" var="signin"/>
+	<fmt:message bundle="${loc}" key="signin.signinText" var="signinText"/>
+	<fmt:message bundle="${loc}" key="signin.header" var="signinHeader"/>
+	<fmt:message bundle="${loc}" key="signin.registerText" var="registerText"/>
+	<fmt:message bundle="${loc}" key="signin.pupilRegisterLink" var="pupilRegisterLink"/>
+	<fmt:message bundle="${loc}" key="signin.forgotPassword" var="forgotPassword"/>
+	
+	<fmt:message bundle="${loc}" key="inprogress" var="inProgress"/>
+	
+	<fmt:message bundle="${loc}" key="registration.signin" var="registrationSignIn"/>
+	<fmt:message bundle="${loc}" key="registration.registrationWord" var="registrationWord"/>
+	<fmt:message bundle="${loc}" key="registration.goToSignInText" var="goToSignInText"/>
+	<fmt:message bundle="${loc}" key="registration.alreadyLoggedIn" var="alreadyLoggedIn"/>
+	<fmt:message bundle="${loc}" key="registration.goToPupilRegistrationText" var="goToPupilRegistrationText"/>
+	<fmt:message bundle="${loc}" key="registration.pupilAccountLink" var="pupilAccountLink"/>
+	<fmt:message bundle="${loc}" key="registration.goToTrainerRegistrationText" var="goToTrainerRegistrationText"/>
+	<fmt:message bundle="${loc}" key="registration.trainerAccountLink" var="trainerAccountLink"/>
+	<fmt:message bundle="${loc}" key="registration.registerBTNtext" var="registerBTNtext"/>
+	<fmt:message bundle="${loc}" key="registration.termsText" var="termsText"/>
+	<fmt:message bundle="${loc}" key="registration.termsLink" var="termsLink"/>
+	
+	<fmt:message bundle="${loc}" key="user.email" var="email"/>
+	<fmt:message bundle="${loc}" key="user.password" var="password"/>
+	<fmt:message bundle="${loc}" key="user.name" var="name"/>
+	<fmt:message bundle="${loc}" key="user.lastName" var="lastName"/>
+	<fmt:message bundle="${loc}" key="user.passFonfirm" var="passFonfirm"/>
+	<fmt:message bundle="${loc}" key="user.sex" var="sex"/>
+	<fmt:message bundle="${loc}" key="user.male" var="male"/>
+	<fmt:message bundle="${loc}" key="user.female" var="female"/>
+	<fmt:message bundle="${loc}" key="user.photo" var="photo"/>
+	<fmt:message bundle="${loc}" key="user.birthday" var="birthday"/>
+	
+	<fmt:message bundle="${loc}" key="pupil.header" var="pupil_header"/>
+	<fmt:message bundle="${loc}" key="pupil.weight" var="weightText"/>
+	<fmt:message bundle="${loc}" key="pupil.height" var="heightText"/>
+	<fmt:message bundle="${loc}" key="pupil.goal" var="goal"/>
+	
+	<fmt:message bundle="${loc}" key="trainer.header" var="trainer_header"/>
+	<fmt:message bundle="${loc}" key="trainer.experience" var="experience"/>
+	<fmt:message bundle="${loc}" key="trainer.specialization" var="specialization"/>
+	<fmt:message bundle="${loc}" key="trainer.price" var="priceText"/>
+	<fmt:message bundle="${loc}" key="trainer.about" var="about"/>
+	
+	<fmt:message bundle="${loc}" key="error.title" var="error_title"/>
+	<fmt:message bundle="${loc}" key="error.text" var="error_text"/>
+	
+	<fmt:message bundle="${loc}" key="allUsers.ageText" var="age"/>
+	<fmt:message bundle="${loc}" key="allUsers.years" var="years"/>
+	
+	<fmt:message bundle="${loc}" key="allTrainers.header" var="allTrainers_header"/>
+	<fmt:message bundle="${loc}" key="allTrainers.standing" var="standing"/>
+	<fmt:message bundle="${loc}" key="allTrainers.price" var="price"/>
+	<fmt:message bundle="${loc}" key="allTrainers.perTraining" var="perTraining"/>
+	
+	<fmt:message bundle="${loc}" key="allPupils.header" var="allPupils_header"/>
+	<fmt:message bundle="${loc}" key="allPupils.weight" var="weight"/>
+	<fmt:message bundle="${loc}" key="allPupils.weightKG" var="weightKG"/>
+	<fmt:message bundle="${loc}" key="allPupils.height" var="height"/>
+	<fmt:message bundle="${loc}" key="allPupils.heightSM" var="heightSM"/>
+	<fmt:message bundle="${loc}" key="allPupils.goal" var="goalText"/>
+	
+	<fmt:message bundle="${loc}" key="btn.employ" var="employ"/>
+	<fmt:message bundle="${loc}" key="btn.fire" var="fire"/>
+	<fmt:message bundle="${loc}" key="btn.makeOffer" var="makeOffer"/>
+	
+</html>c

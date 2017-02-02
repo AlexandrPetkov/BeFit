@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>BeFit</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  
+  <servlet>
+    	<servlet-name>index</servlet-name>
+    	<jsp-file>/index.jsp</jsp-file>
+  	</servlet>
+  	<servlet-mapping>
+   		<servlet-name>index</servlet-name>
+   		<url-pattern>/index</url-pattern>
+   	</servlet-mapping>
+   	
+  	<servlet>
+    	<servlet-name>LoginationPage</servlet-name>
+    	<jsp-file>/WEB-INF/signin.jsp</jsp-file>
+  	</servlet>
+  	<servlet-mapping>
+   		<servlet-name>LoginationPage</servlet-name>
+   		<url-pattern>/signin</url-pattern>
+   	</servlet-mapping>
+   	
+   	<servlet>
+    	<servlet-name>PupilsCardPage</servlet-name>
+    	<jsp-file>/pupilsCard.jsp</jsp-file>
+  	</servlet>
+  	<servlet-mapping>
+   		<servlet-name>PupilsCardPage</servlet-name>
+   		<url-pattern>/pupilsCard</url-pattern>
+   	</servlet-mapping>
+   	
+   	<servlet>
+    	<servlet-name>TrainersCardPage</servlet-name>
+    	<jsp-file>/TrainersCard.jsp</jsp-file>
+  	</servlet>
+  	<servlet-mapping>
+   		<servlet-name>TrainersCardPage</servlet-name>
+   		<url-pattern>/trainersCard</url-pattern>
+   	</servlet-mapping>
+   	
+   	<servlet>
+    	<servlet-name>allTrainersPage</servlet-name>
+    	<jsp-file>/allTrainers.jsp</jsp-file>
+  	</servlet>
+  	<servlet-mapping>
+   		<servlet-name>allTrainersPage</servlet-name>
+   		<url-pattern>/allTrainers</url-pattern>
+   	</servlet-mapping>
+   	
+   	<servlet>
+    	<servlet-name>allPupilsPage</servlet-name>
+    	<jsp-file>/allPupils.jsp</jsp-file>
+  	</servlet>
+  	<servlet-mapping>
+   		<servlet-name>allPupilsPage</servlet-name>
+   		<url-pattern>/allPupils</url-pattern>
+   	</servlet-mapping>
+   	
+   	<servlet>
+    	<servlet-name>error</servlet-name>
+    	<jsp-file>/WEB-INF/error.jsp</jsp-file>
+  	</servlet>
+  	<servlet-mapping>
+   		<servlet-name>error</servlet-name>
+   		<url-pattern>/error</url-pattern>
+   	</servlet-mapping>
+   	
+   	<servlet>
+    	<servlet-name>signUpPupil</servlet-name>
+    	<jsp-file>/WEB-INF/signupPupil.jsp</jsp-file>
+  	</servlet>
+  	<servlet-mapping>
+   		<servlet-name>signUpPupil</servlet-name>
+   		<url-pattern>/signUpPupil</url-pattern>
+   	</servlet-mapping>
+	
+	<servlet>
+    	<servlet-name>signUpTrainer</servlet-name>
+    	<jsp-file>/WEB-INF/signupTrainer.jsp</jsp-file>
+  	</servlet>
+  	<servlet-mapping>
+   		<servlet-name>signUpTrainer</servlet-name>
+   		<url-pattern>/signUpTrainer</url-pattern>
+   	</servlet-mapping>
+ 	
+ 	<servlet>
+    <servlet-name>Controller</servlet-name>
+    <servlet-class>controller.Controller</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>Controller</servlet-name>
+    <url-pattern>/Controller</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ChangeLocale</servlet-name>
+    <servlet-class>controller.ChangeLocaleController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ChangeLocale</servlet-name>
+    <url-pattern>/ChangeLocale</url-pattern>
+  </servlet-mapping>
+  
+  
+  <listener>
+    <listener-class>controller.listener.DAOInitAndDestroyListener</listener-class>
+  </listener>
+  
+</web-app>
