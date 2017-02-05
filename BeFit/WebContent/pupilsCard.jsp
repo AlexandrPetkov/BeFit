@@ -27,7 +27,7 @@
 	<script src="assets/js/html5shiv.js"></script>
 	<script src="assets/js/respond.min.js"></script>
 	<![endif]-->
-	<script src="assets/js/switchEditableBlock.js"></script>
+	
 </head>
 <body>
 
@@ -124,7 +124,7 @@
 							</div>
 						</div>
 						<div class="text-right">
-							<input type='button' value='Form Checker' onclick="changePupilBlock();"/>
+							<input type='button' value='Form Checker' onclick="changePupilBlock()"/>
 							<button class="btn" onclick='changePupilBlock()'>sgsrgvvdrfv</button>
 						</div>
 					</div>

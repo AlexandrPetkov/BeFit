@@ -1,4 +1,4 @@
-!function changePupilBlock() {
+function changePupilBlock() {
 	alert("test");
 }
 

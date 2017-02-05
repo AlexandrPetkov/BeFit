@@ -1,3 +1,7 @@
+function changePupilBlock() {
+	alert("test");
+}
+
 jQuery(document).ready(function($) {
 
 	$(".headroom").headroom({
