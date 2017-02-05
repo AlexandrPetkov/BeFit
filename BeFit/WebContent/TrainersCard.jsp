@@ -63,16 +63,47 @@
 	<div class="container">
 			<ol class="breadcrumb">
 			<li><a href="index.jsp">${home}</a></li>
-			<li class="active">${cabinet}</li>
+			<c:if test="${sessionScope.user.id eq user.id}">
+						<li class="active">${cabinet}</li>
+					</c:if>
+			<c:if test="${not (sessionScope.user.id eq user.id)}">
+						<li class="active">${user.name}'s card</li>
+					</c:if>
 		</ol>
 	<div class="row">
 			
 			<!-- Article main content -->
 		<article class="col-xs-12 maincontent">
 			<header class="page-header">
-				<h1 class="page-title">${cabinet}</h1>
+				<h1 class="page-title">${user.name} ${user.secondName}</h1>
 			</header>
+			<div class="col-md-10 col-md-offset-1">
+				
+						<div class="row top-margin">
+							<div class="col-md-4">
+								<c:choose>
+									<c:when test="${not (user.photo eq 'no photo')}">
+										<a  href="Controller?command=goToUserCard&id=${user.id}&isTrainer=${user.isTrainer}"><img src="${user.photo}" alt="..." style="width: 100%"></a>
+									</c:when>
+								<c:otherwise>
+									<img src="http://placehold.it/260x180" alt="..." style="width: 100%">
+								</c:otherwise>
+								</c:choose>
+							</div>
+								
+							<div class="col-md-4">
+							<label>Личные данные</label>
+								<p>${age}: <strong>${user.age}</strong> <small>${years}</small></p>
+								
+							</div>
+								
+							<div class="col-md-4">
+								
+							</div>
+						</div>
+			</div>
 		</article>
+		<p class="text-center text-muted" style="color: red">${requestScope.errorText}</p>
 	</div>
 		<p class="text-center text-muted" style="color: red">${requestScope.errorText}</p>
 		

@@ -79,7 +79,7 @@
 					<h1 class="page-title">${registrationWord}</h1>
 				</header>
 				
-				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+				<div class="col-md-8 col-md-offset-2 col-sm-9 col-sm-offset-1">
 					<div class="panel panel-default">
 						<div class="panel-body">
 							<h3 class="thin text-center">${pupil_header}</h3>
@@ -104,17 +104,20 @@
 
 							<form action="Controller" method="post">
 							<input type="hidden" name="command" value="SignUpPupil">
-								<div class="top-margin">
+							<div class="row top-margin">
+								<div class="col-xs-6">
 									<label>${name}</label>
 									<input type="text" name="name" class="form-control">
 								</div>
-								<div class="top-margin">
+								<div class="col-xs-6">
 									<label>${lastName}</label>
 									<input type="text" name="secondName" class="form-control">
 								</div>
+								</div>
+								<hr>
 								<div class="top-margin">
 									<label>${email}<span class="text-danger">*</span></label>
-									<input type="text" name="login" class="form-control">
+									<input type="email" name="login" class="form-control">
 								</div>
 
 								<div class="row top-margin">
@@ -130,57 +133,53 @@
 								<hr>
 								
 								<div class="row top-margin">
-									<div class="col-sm-4">
-										<label class="radio">${sex}<span class="text-danger">*</span><br>
+								<div class="col-md-4">
+									<label>${photo}</label>
+									<input type="file" class="btn-default" name="photo" class="form-control">   
+								</div>
+									<div class="col-md-3 col-md-offset-1">
+										<label>${sex}<span class="text-danger">*</span><br>
 										<input type="radio" name="isMale" value="true"> 
 										${male}<br>
 										<input type="radio" name="isMale" value="false"> 
 										${female}  
 										</label>                   
 									</div>
-								
-									<div class="col-sm-8">
-										<label>${photo}</label>
-			<!-- 						<input type="file" class="btn-default" name="name" class="form-control">    -->
-										<input type="file" class="form-control" name="photo">
-									</div>
-									
-									
-								</div>
-								
-								<div class="row top-margin">
 									<div class="col-md-4">
-										<label>${birthday}</label>
+										<label>${birthday}</span></label>
 										<input type="date" name="age" class="form-control">
 									</div>
-									
-									<div class="col-md-4">
-										<label>${weightText}</label>
-										<input type="text" name="weight" class="form-control">
-									</div>
-								
-								
-									<div class="col-md-4">
-										<label>${heightText}</label>
-										<input type="text" name="height_sm" class="form-control">
-									</div>
-									
 								</div>
-								<div class="top-margin">
+								
+								<div class="row top-margin">									
+									<div class="col-md-3">
+										<label>${weightText}</label>
+										<input type="number" name="weight" class="form-control">
+									</div>
+								
+								
+									<div class="col-md-3">
+										<label>${heightText}</label>
+										<input type="number" name="height_sm" class="form-control">
+									</div>
 									
+									<div class="col-md-6">
 										<label>${goal}</label>
 										<textarea name="goal" class="form-control"></textarea>
+									</div>
+									
 								</div>
+								
 								<hr>
 
 								<div class="row">
-									<div class="col-lg-8">
+									<div class="col-lg-6">
 										<label class="checkbox">
 											<input type="checkbox"> 
 											${termsText}<a href="page_terms.jsp" target="_blank">${termsLink}</a>
 										</label>                        
 									</div>
-									<div class="col-lg-4 text-right">
+									<div class="col-lg-6 text-right">
 										<button class="btn btn-action" type="submit">${registerBTNtext}</button>
 									</div>
 								</div>

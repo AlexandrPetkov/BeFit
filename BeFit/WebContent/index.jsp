@@ -67,7 +67,7 @@
 			<div class="row">
 			<h1 class="lead">${tagline}</h1>
 				<c:if test="${sessionScope.isLogged eq true}">
-				<p>${hello}<strong>${user.name }</strong>${callToAction}</p>
+				<p>${hello}<strong>${user.name} </strong>${callToAction}</p>
 				</c:if>
 			</div>
 		</div>

@@ -34,7 +34,6 @@ public class ChangeLocaleController extends HttpServlet {
 	private void changeLocale(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		HttpSession session = req.getSession(true);
 		String locale = "ru";
-		String page = null;
 
 		locale = (String) session.getAttribute("local");
 
