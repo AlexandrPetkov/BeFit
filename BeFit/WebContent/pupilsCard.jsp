@@ -28,6 +28,70 @@
 	<script src="assets/js/respond.min.js"></script>
 	<![endif]-->
 	
+	<script type="text/javascript">
+		function setEditablePupilData() {
+			$(".nonchangablePupilData").replaceWith(
+					'<div class="changablePupilData">' +
+					'<form action="Controller" method="post">' +
+						'<div class="row top-margin">' +
+							'<div class="col-md-4">' +
+								'<label>${birthday}</span></label>' +
+								'<input type="date" name="age" class="form-control" value="${user.birthday}">' +
+							'</div>' +
+							'<div class="col-md-4">' +
+								'<label>${weightText}</label>' +
+								'<input type="number" name="weight" class="form-control" value="${user.weight}">' +
+							'</div>' +
+							'<div class="col-md-4">' +
+								'<label>${heightText}</label>' +
+								'<input type="number" name="height_sm" class="form-control" value="${user.height_sm}">' +
+							'</div>' +
+							'</div>' +
+							'<div class="top-margin">' +
+								'<label>${goal}</label>' +
+								'<textarea name="goal" class="form-control">${user.goal}</textarea>' +
+							'</div>' +
+						'<div class="row top-margin">' +
+							'<div class="col-md-3">' +
+								'<button class="btn" type="button" onclick="setNoneditablePupilData()">Cancel</button>' +
+							'</div>	' +
+							'<div class="col-md-3">' +
+								'<button class="btn btn-action" type="submit" name="command" value="editPupilData">ОК</button>' +
+							'</div>' +
+						'</div>' +
+					'</form>' +
+				'</div>'
+			);
+		}
+		
+		function setNoneditablePupilData() {
+			$(".changablePupilData").replaceWith(
+					'<div class="nonchangablePupilData">' +
+					'<label class="text-center">Личные данные</label> ' +
+					'<div class="row">' +
+						'<div class="col-xs-3">' +
+							'<p>${age}:</p>' +
+							'<p>${weight}:</p>' +
+							'<p>${height}:</p>' +
+						'</div>' +
+						'<div class="col-xs-3">' +
+							'<p><strong>${user.age}</strong> <small>${years}</small></p>' +
+							'<p><strong>${user.weight}</strong><small> ${weightKG}</small></p>' +
+							'<p><strong>${user.height_sm}</strong><small> ${heightSM}</small></p>' +
+						'</div>' +
+						'<div class="col-xs-6">' +
+							'<p>Тренер: <strong>Радюк Виталий</strong></p>' +
+							'<p>Цель: <strong>${user.goal}</strong></p>	' +
+						'</div>' +
+					'</div>' +
+					'<div class="text-right">' +
+						'<button class="btn" onclick="setEditablePupilData()">Изменить</button>' +
+					'</div>' +
+				'</div>'
+			);
+		}
+	</script>
+	
 </head>
 <body>
 
@@ -102,7 +166,7 @@
 			<div class="col-md-6">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<div>
+						<div class="nonchangablePupilData">
 							<label class="text-center">Личные данные</label>
 							<div class="row">
 								<div class="col-xs-3">
@@ -122,14 +186,13 @@
 									
 								</div>
 							</div>
-						</div>
-						<div class="text-right">
-							<input type='button' value='Form Checker' onclick="changePupilBlock()"/>
-							<button class="btn" onclick='changePupilBlock()'>sgsrgvvdrfv</button>
+							<div class="text-right">
+								<button class="btn" onclick='setEditablePupilData()'>Изменить</button>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</div>		
 		</article>
 		<p class="text-center text-muted" style="color: red">${requestScope.errorText}</p>
 	</div>

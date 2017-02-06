@@ -1,7 +1,3 @@
-function changePupilBlock() {
-	alert("test");
-}
-
 jQuery(document).ready(function($) {
 
 	$(".headroom").headroom({
@@ -13,5 +9,4 @@ jQuery(document).ready(function($) {
 			"unpinned": "slideUp"
 		}
 	});
-
 });
