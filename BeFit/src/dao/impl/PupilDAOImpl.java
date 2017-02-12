@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import Constant.Constants;
 import bean.Pupil;
+import constant.Constants;
 import dao.PupilDAO;
 import dao.connection.CloseDAO;
 import dao.connection.ConnectionPool;
@@ -111,9 +111,36 @@ public class PupilDAOImpl implements PupilDAO {
 	}
 
 	@Override
-	public Pupil editProfile(Pupil pupil) throws DAOException {
-		// TODO Auto-generated method stub
-		return null;
+	public void editProfile(Pupil pupil) throws DAOException {
+		ConnectionPool connectionPool = ConnectionPool.getInstance();
+		Connection con = null;
+		Statement st = null;
+
+		try {
+			con = connectionPool.take();
+			con.setAutoCommit(false);
+			st = con.createStatement();
+			st.executeUpdate(String.format(Constants.UPDATE_USER, pupil.getName(), pupil.getSecondName(), pupil.getBirthday(), pupil.getId()));
+
+			st.execute(String.format(Constants.UPDATE_PUPIL, pupil.getHeight_sm(), pupil.getWeight(), pupil.getGoal(), pupil.getId()));
+			con.commit();
+
+			connectionPool.free(con);
+		} catch (InterruptedException e) {
+			// logger
+			throw new DAOException(e);
+		} catch (SQLException e) {
+			// logger
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// logger
+				throw new DAOException(e1);
+			}
+			throw new DAOException(e);
+		} finally {
+			CloseDAO.closeStatement(st);
+		}
 	}
 
 	@Override

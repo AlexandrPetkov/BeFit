@@ -3,9 +3,9 @@ package command.impl;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Constant.Constants;
 import command.Command;
 import command.exception.CommandNotFoundException;
+import constant.Constants;
 
 public class GoToSignIn implements Command {
 

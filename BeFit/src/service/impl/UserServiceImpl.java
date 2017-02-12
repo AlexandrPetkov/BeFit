@@ -1,7 +1,7 @@
 package service.impl;
 
-import Constant.Constants;
 import bean.User;
+import constant.Constants;
 import dao.DAOFactory;
 import dao.UserDAO;
 import dao.exception.DAOException;

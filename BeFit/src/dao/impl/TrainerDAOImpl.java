@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import Constant.Constants;
 import bean.Trainer;
+import constant.Constants;
 import dao.TrainerDAO;
 import dao.connection.CloseDAO;
 import dao.connection.ConnectionPool;

@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
-import Constant.Constants;
+import constant.Constants;
 import dao.exception.DAOException;
 
 public class ConnectionPool implements Closeable {

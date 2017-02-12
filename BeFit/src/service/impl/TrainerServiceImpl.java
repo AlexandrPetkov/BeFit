@@ -3,8 +3,8 @@ package service.impl;
 import java.util.Date;
 import java.util.List;
 
-import Constant.Constants;
 import bean.Trainer;
+import constant.Constants;
 import dao.DAOFactory;
 import dao.TrainerDAO;
 import dao.exception.DAOException;

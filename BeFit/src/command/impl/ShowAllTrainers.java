@@ -5,10 +5,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Constant.Constants;
 import bean.Trainer;
 import command.Command;
 import command.exception.CommandNotFoundException;
+import constant.Constants;
 import service.ServiceFactory;
 import service.TrainerService;
 import service.exception.ServiceException;

@@ -4,12 +4,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Constant.Constants;
 import bean.Pupil;
 import bean.Trainer;
 import bean.User;
 import command.Command;
 import command.exception.CommandNotFoundException;
+import constant.Constants;
 import service.ServiceFactory;
 import service.UserService;
 import service.exception.ServiceException;

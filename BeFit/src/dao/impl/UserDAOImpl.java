@@ -6,10 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import Constant.Constants;
 import bean.Pupil;
 import bean.Trainer;
 import bean.User;
+import constant.Constants;
 import dao.UserDAO;
 import dao.connection.CloseDAO;
 import dao.connection.ConnectionPool;

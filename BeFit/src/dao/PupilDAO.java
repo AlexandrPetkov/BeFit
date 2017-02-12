@@ -10,7 +10,7 @@ public interface PupilDAO {
 
 	List<Pupil> getAllPupils() throws DAOException;
 
-	Pupil editProfile(Pupil pupil) throws DAOException;
+	void editProfile(Pupil pupil) throws DAOException;
 
 	Pupil getPupil(int id) throws DAOException;
 

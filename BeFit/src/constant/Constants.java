@@ -1,4 +1,4 @@
-package Constant;
+package constant;
 
 public class Constants {
 
@@ -16,7 +16,7 @@ public class Constants {
 	public static final String PARAM_HEIGHT = "height_sm";
 	public static final String PARAM_WEIGHT = "weight";
 	public static final String PARAM_GOAL = "goal";
-	public static final String PARAM_PHOTO = "no photo";
+	public static final String PARAM_PHOTO = "assets/images/photo/";
 	public static final String PARAM_EXPERIENCE = "experience_years";
 	public static final String PARAM_SPECIALIZATION = "specialization";
 	public static final String PARAM_PRICE = "price";
@@ -44,6 +44,7 @@ public class Constants {
 	public static final String COMMAND_HIRE_TRAINER = "HireTrainer";
 	public static final String COMMAND_FIRE_TRAINER = "FireTrainer";
 	public static final String COMMAND_MAKE_OFFER = "MakeOffer";
+	public static final String EDIT_PUPIL_DATA = "EditPupilData";
 
 	// pages
 	public static final String PAGE_INDEX = "/index";
@@ -77,6 +78,8 @@ public class Constants {
 	public static final String INSERT_NEW_TRAINER = "INSERT INTO Trainers (idUsers, Experience_years, Specialization, Price, About) VALUES (%d, '%s', '%s', '%s', '%s')";
 	public static final String UPDATE_PUPIL_WITH_ZERO_TRAINER = "UPDATE Pupils SET idTrainers=0 WHERE idUsers=%d";
 	public static final String UPDATE_PUPIL_WITH_TRAINER = "UPDATE Pupils SET idTrainers=%d WHERE idUsers=%d";
+	public static final String UPDATE_USER = "UPDATE Users SET Name='%s', Second_name='%s', Age='%s' WHERE idUsers=%d";
+	public static final String UPDATE_PUPIL = "UPDATE Pupils SET Heigth_sm='%s', Weight='%s', goal='%s' WHERE idUsers=%d";
 
 	// Exception messages
 	public static final String CONNECTION_POOL_IS_NULL = "Connection is null";
@@ -92,4 +95,5 @@ public class Constants {
 	public static final String NOT_A_PUPIL = "Sorry, but we can't do this, cause you are not a pupil";
 	public static final String NOT_A_TRAINER = "Sorry, but we can't do this, cause you are not a trainer";
 	public static final String CANT_GO_TO_CABINET = "Sorry, didn't get to personal page((. Something wrong with user's id";
+	public static final String CANT_EDIT_PUPIL_DATA = "You haven't enough rights to change personal data of this pupil. But you can change your data";
 }

@@ -113,7 +113,7 @@
 									<label>${lastName}</label>
 									<input type="text" name="secondName" class="form-control">
 								</div>
-								</div>
+							</div>
 								<hr>
 								<div class="top-margin">
 									<label>${email}<span class="text-danger">*</span></label>

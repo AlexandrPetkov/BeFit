@@ -32,35 +32,46 @@
 		function setEditablePupilData() {
 			$(".nonchangablePupilData").replaceWith(
 					'<div class="changablePupilData">' +
-					'<form action="Controller" method="post">' +
-						'<div class="row top-margin">' +
-							'<div class="col-md-4">' +
-								'<label>${birthday}</span></label>' +
-								'<input type="date" name="age" class="form-control" value="${user.birthday}">' +
+						'<form action="Controller" method="post">' +
+							'<input type="hidden" name="id" value="${user.id}">' +
+							'<div class="row top-margin">' +
+								'<div class="col-xs-6">' +
+									'<label>${name}</label>' +
+									'<input type="text" name="name" class="form-control" value="${user.name}">' +
+								'</div>' +
+								'<div class="col-xs-6">' +
+									'<label>${lastName}</label>' +
+									'<input type="text" name="secondName" class="form-control" value="${user.secondName}">' +
+								'</div>' +
 							'</div>' +
-							'<div class="col-md-4">' +
-								'<label>${weightText}</label>' +
-								'<input type="number" name="weight" class="form-control" value="${user.weight}">' +
-							'</div>' +
-							'<div class="col-md-4">' +
-								'<label>${heightText}</label>' +
-								'<input type="number" name="height_sm" class="form-control" value="${user.height_sm}">' +
-							'</div>' +
+							'<div class="row top-margin">' +
+								'<div class="col-md-4">' +
+									'<label>${birthday}</span></label>' +
+									'<input type="date" name="age" class="form-control" value="${user.birthday}">' +
+								'</div>' +
+								'<div class="col-md-4">' +
+									'<label>${weightText}</label>' +
+									'<input type="number" name="weight" class="form-control" value="${user.weight}">' +
+								'</div>' +
+								'<div class="col-md-4">' +
+									'<label>${heightText}</label>' +
+									'<input type="number" name="height_sm" class="form-control" value="${user.height_sm}">' +
+								'</div>' +
 							'</div>' +
 							'<div class="top-margin">' +
 								'<label>${goal}</label>' +
 								'<textarea name="goal" class="form-control">${user.goal}</textarea>' +
 							'</div>' +
-						'<div class="row top-margin">' +
-							'<div class="col-md-3">' +
-								'<button class="btn" type="button" onclick="setNoneditablePupilData()">Cancel</button>' +
-							'</div>	' +
-							'<div class="col-md-3">' +
-								'<button class="btn btn-action" type="submit" name="command" value="editPupilData">ОК</button>' +
+							'<div class="row top-margin">' +
+								'<div class="col-md-3 col-md-offset-6 text-right">' +
+									'<button class="btn" type="button" onclick="setNoneditablePupilData()">Cancel</button>' +
+								'</div>	' +
+								'<div class="col-md-3 text-right">' +
+									'<button class="btn btn-action" type="submit" name="command" value="EditPupilData">ОК</button>' +
+								'</div>' +
 							'</div>' +
-						'</div>' +
-					'</form>' +
-				'</div>'
+						'</form>' +
+					'</div>'
 			);
 		}
 		
@@ -80,7 +91,6 @@
 							'<p><strong>${user.height_sm}</strong><small> ${heightSM}</small></p>' +
 						'</div>' +
 						'<div class="col-xs-6">' +
-							'<p>Тренер: <strong>Радюк Виталий</strong></p>' +
 							'<p>Цель: <strong>${user.goal}</strong></p>	' +
 						'</div>' +
 					'</div>' +
@@ -112,7 +122,7 @@
 					<li><a href="contact.jsp">${contacts}</a></li>
 					
 					<c:if test="${sessionScope.isLogged eq true}">
-						<li class="active"><a href="Controller?command=goToUserCard&id=${sessionScope.user.id}">${cabinet}</a></li>
+						<li <c:if test="${sessionScope.user.id eq user.id}">class="active"</c:if>><a href="Controller?command=goToUserCard&id=${sessionScope.user.id}">${cabinet}</a></li>
 						<li><a class="btn" href="Controller?command=SignOut">${signOut}</a></li>
 					</c:if>
 					
@@ -157,9 +167,11 @@
 							</c:otherwise>
 						</c:choose>
 					</div>
+					<c:if test="${sessionScope.user.id eq user.id}">
 					<div class="panel-body text-right">
 						<button class="btn" type="submit">Изменить</button>
-					</div>				
+					</div>
+					</c:if>
 				</div>
 			</div>
 			
@@ -181,14 +193,15 @@
 									<p><strong>${user.height_sm}</strong><small> ${heightSM}</small></p>	
 								</div>
 								<div class="col-xs-6">
-									<p>Тренер: <strong>Радюк Виталий</strong></p>
 									<p>Цель: <strong>${user.goal}</strong></p>	
 									
 								</div>
 							</div>
+							<c:if test="${sessionScope.user.id eq user.id}">
 							<div class="text-right">
 								<button class="btn" onclick='setEditablePupilData()'>Изменить</button>
 							</div>
+							</c:if>
 						</div>
 					</div>
 				</div>

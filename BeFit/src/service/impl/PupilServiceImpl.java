@@ -2,8 +2,8 @@ package service.impl;
 
 import java.util.List;
 
-import Constant.Constants;
 import bean.Pupil;
+import constant.Constants;
 import dao.DAOFactory;
 import dao.PupilDAO;
 import dao.exception.DAOException;
@@ -14,8 +14,6 @@ public class PupilServiceImpl implements PupilService {
 
 	@Override
 	public Pupil singUpPupil(Pupil pupil, String confPassword) throws ServiceException {
-		DAOFactory daoFactory = DAOFactory.getInstance();
-		PupilDAO pupilDAO = daoFactory.getPupilDAO();
 
 		// тут будет валидация данных с формы регистрации ученика (дописать)
 		if (false) {
@@ -23,9 +21,13 @@ public class PupilServiceImpl implements PupilService {
 			throw new ServiceException(Constants.INCORRECT_REGISTRATION_DATA);
 		}
 
+		DAOFactory daoFactory = DAOFactory.getInstance();
+		PupilDAO pupilDAO = daoFactory.getPupilDAO();
+
 		try {
 			pupil = pupilDAO.singUpPupil(pupil);
 		} catch (DAOException e) {
+			// logger
 			throw new ServiceException(e);
 		}
 
@@ -41,6 +43,7 @@ public class PupilServiceImpl implements PupilService {
 		try {
 			pupils = pupilDAO.getAllPupils();
 		} catch (DAOException e) {
+			// logger
 			throw new ServiceException(e);
 		}
 
@@ -48,9 +51,23 @@ public class PupilServiceImpl implements PupilService {
 	}
 
 	@Override
-	public Pupil editProfile(Pupil pupil) throws ServiceException {
-		// TODO Auto-generated method stub
-		return null;
+	public void editProfile(Pupil pupil) throws ServiceException {
+
+		// тут будет валидация данных с формы регистрации ученика (дописать)
+		if (false) {
+			pupil = null;
+			throw new ServiceException(Constants.INCORRECT_REGISTRATION_DATA);
+		}
+
+		DAOFactory daoFactory = DAOFactory.getInstance();
+		PupilDAO pupilDAO = daoFactory.getPupilDAO();
+
+		try {
+			pupilDAO.editProfile(pupil);
+		} catch (DAOException e) {
+			// logger
+			throw new ServiceException(e);
+		}
 	}
 
 	@Override
@@ -64,9 +81,11 @@ public class PupilServiceImpl implements PupilService {
 			try {
 				pupil = pupilDAO.getPupil(id);
 			} catch (DAOException e) {
+				// logger
 				throw new ServiceException(e);
 			}
 		} else {
+			// logger
 			throw new ServiceException(Constants.CANT_GO_TO_CABINET);
 		}
 		return pupil;
