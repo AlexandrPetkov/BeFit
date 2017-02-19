@@ -116,5 +116,8 @@
   <listener>
     <listener-class>controller.listener.DAOInitAndDestroyListener</listener-class>
   </listener>
+  <listener>
+    <listener-class>org.apache.commons.fileupload.servlet.FileCleanerCleanup</listener-class>
+  </listener>
   
 </web-app>

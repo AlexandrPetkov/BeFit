@@ -92,5 +92,11 @@
 	<fmt:message bundle="${loc}" key="btn.employ" var="employ"/>
 	<fmt:message bundle="${loc}" key="btn.fire" var="fire"/>
 	<fmt:message bundle="${loc}" key="btn.makeOffer" var="makeOffer"/>
+	<fmt:message bundle="${loc}" key="btn.edit" var="edit"/>
+	<fmt:message bundle="${loc}" key="btn.ok" var="ok"/>
+	<fmt:message bundle="${loc}" key="btn.cancel" var="cancel"/>
 	
-</html>c
+	<fmt:message bundle="${loc}" key="pupilCard.personalDataText" var="personalData"/>
+	<fmt:message bundle="${loc}" key="pupilCard.trainingProgramText" var="trainingProgramm"/>
+	
+</html>

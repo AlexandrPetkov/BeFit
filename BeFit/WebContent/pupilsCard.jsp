@@ -64,10 +64,10 @@
 							'</div>' +
 							'<div class="row top-margin">' +
 								'<div class="col-md-3 col-md-offset-6 text-right">' +
-									'<button class="btn" type="button" onclick="setNoneditablePupilData()">Cancel</button>' +
+									'<button class="btn" type="button" onclick="setNoneditablePupilData()">${cancel}</button>' +
 								'</div>	' +
 								'<div class="col-md-3 text-right">' +
-									'<button class="btn btn-action" type="submit" name="command" value="EditPupilData">ОК</button>' +
+									'<button class="btn btn-action" type="submit" name="command" value="EditPupilData">${ok}</button>' +
 								'</div>' +
 							'</div>' +
 						'</form>' +
@@ -78,7 +78,7 @@
 		function setNoneditablePupilData() {
 			$(".changablePupilData").replaceWith(
 					'<div class="nonchangablePupilData">' +
-					'<label class="text-center">Личные данные</label> ' +
+					'<label class="text-center">${personalData}</label> ' +
 					'<div class="row">' +
 						'<div class="col-xs-3">' +
 							'<p>${age}:</p>' +
@@ -95,7 +95,7 @@
 						'</div>' +
 					'</div>' +
 					'<div class="text-right">' +
-						'<button class="btn" onclick="setEditablePupilData()">Изменить</button>' +
+						'<button class="btn" onclick="setEditablePupilData()">${edit}</button>' +
 					'</div>' +
 				'</div>'
 			);
@@ -169,7 +169,7 @@
 					</div>
 					<c:if test="${sessionScope.user.id eq user.id}">
 					<div class="panel-body text-right">
-						<button class="btn" type="submit">Изменить</button>
+						<button class="btn" type="submit">${edit}</button>
 					</div>
 					</c:if>
 				</div>
@@ -179,7 +179,7 @@
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<div class="nonchangablePupilData">
-							<label class="text-center">Личные данные</label>
+							<label class="text-center">${personalData}</label>
 							<div class="row">
 								<div class="col-xs-3">
 									<p>${age}:</p>
@@ -193,13 +193,13 @@
 									<p><strong>${user.height_sm}</strong><small> ${heightSM}</small></p>	
 								</div>
 								<div class="col-xs-6">
-									<p>Цель: <strong>${user.goal}</strong></p>	
+									<p>${goalText}: <strong>${user.goal}</strong></p>	
 									
 								</div>
 							</div>
 							<c:if test="${sessionScope.user.id eq user.id}">
 							<div class="text-right">
-								<button class="btn" onclick='setEditablePupilData()'>Изменить</button>
+								<button class="btn" onclick='setEditablePupilData()'>${edit}</button>
 							</div>
 							</c:if>
 						</div>
@@ -211,7 +211,7 @@
 	</div>
 	<div>
 		<header class="page-header">
-				<h1 class="page-title">Программа тренировок</h1>
+				<h1 class="page-title">${trainingProgramm}</h1>
 			</header>
 	</div>
 	

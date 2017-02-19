@@ -12,9 +12,6 @@ import constant.Constants;
 
 public class ChangeLocaleController extends HttpServlet {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 5014565495139093861L;
 
 	@Override
@@ -33,21 +30,23 @@ public class ChangeLocaleController extends HttpServlet {
 
 	private void changeLocale(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		HttpSession session = req.getSession(true);
-		String locale = "ru";
+		String locale = Constants.PARAM_LOCALE_RU;
 
-		locale = (String) session.getAttribute("local");
+		// System.out.println("Loc: " + req.getHeader(Constants.PARAM_REFERER));
+
+		locale = (String) session.getAttribute(Constants.PARAM_LOCALE);
 
 		if (locale == null) {
-			locale = "ru";
-		} else if (locale.equals("ru")) {
-			locale = "en";
+			locale = Constants.PARAM_LOCALE_RU;
+		} else if (locale.equals(Constants.PARAM_LOCALE_RU)) {
+			locale = Constants.PARAM_LOCALE_EN;
 		} else {
-			locale = "ru";
+			locale = Constants.PARAM_LOCALE_RU;
 		}
 
-		session.setAttribute("local", locale);
+		session.setAttribute(Constants.PARAM_LOCALE, locale);
 
-		resp.sendRedirect(req.getHeader("Referer"));
+		resp.sendRedirect(req.getHeader(Constants.PARAM_REFERER));
 
 	}
 

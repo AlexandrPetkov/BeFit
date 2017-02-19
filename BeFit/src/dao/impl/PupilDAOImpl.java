@@ -190,7 +190,7 @@ public class PupilDAOImpl implements PupilDAO {
 		pupil.setIdTrainers(rs.getInt(4));
 		pupil.setGoal(rs.getString(5));
 		pupil.setLogin(rs.getString(7));
-		pupil.setPassword(rs.getString(8));
+
 		pupil.setName(rs.getString(9));
 		pupil.setSecondName(rs.getString(10));
 		pupil.setBirthday(rs.getDate(11));

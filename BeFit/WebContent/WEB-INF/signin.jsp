@@ -87,7 +87,7 @@
 							<p class="text-center text-muted" style="color: red">${requestScope.errorText}</p>
 							<form action="Controller" method="post">
 								<div class="top-margin">
-									<input type="hidden" name="command" value="SignIn">
+								<!-- 	<input type="hidden" name="command" value="SignIn"> -->
 									<label>${email}<span class="text-danger">*</span></label>
 									<input type="text" name="login" class="form-control">
 								</div>
@@ -103,7 +103,7 @@
 										<b><a href="">${forgotPassword}</a> <small>${inProgress}</small></b>
 									</div>
 									<div class="col-lg-4 text-right">
-										<button class="btn btn-action" type="submit">${signinText}</button>
+										<button class="btn btn-action" name="command" value="SignIn" type="submit">${signinText}</button>
 									</div>
 								</div>
 							</form>

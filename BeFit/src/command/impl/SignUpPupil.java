@@ -1,6 +1,8 @@
 package command.impl;
 
 import java.sql.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +22,12 @@ public class SignUpPupil implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandNotFoundException {
 		HttpSession session = request.getSession();
 		String page = null;
-		Pupil pupil = fillPupil(request);
+		HashMap<String, String> inputs = null;
+
+		inputs = (HashMap<String, String>) request.getAttribute("requestParatemers");
+
+		Pupil pupil = fillPupil(inputs);
+
 		String confPassword = request.getParameter(Constants.PARAM_PASSWORD_CONFIRMATION);
 
 		ServiceFactory factory = ServiceFactory.getInstance();
@@ -44,24 +51,36 @@ public class SignUpPupil implements Command {
 
 	}
 
-	private Pupil fillPupil(HttpServletRequest request) {
+	private Pupil fillPupil(Map<String, String> inputs) {
 		Pupil pupil = new Pupil();
 
-		String login = request.getParameter(Constants.PARAM_LOGIN);
-		String password = request.getParameter(Constants.PARAM_PASSWORD);
-		String name = request.getParameter(Constants.PARAM_NAME);
-		String secondName = request.getParameter(Constants.PARAM_SECOND_NAME);
+		String login = inputs.get(Constants.PARAM_LOGIN); // request.getParameter(Constants.PARAM_LOGIN);
+		String password = inputs.get(Constants.PARAM_PASSWORD);// request.getParameter(Constants.PARAM_PASSWORD);
+		String name = inputs.get(Constants.PARAM_NAME);// request.getParameter(Constants.PARAM_NAME);
+		String secondName = inputs.get(Constants.PARAM_SECOND_NAME);// request.getParameter(Constants.PARAM_SECOND_NAME);
 
-		// доделать полноценную загрузку аватаров в систему
-		String photo = Constants.PARAM_PHOTO + login;
+		String photo = inputs.get(Constants.PARAM_PHOTO);
 
-		String age = request.getParameter(Constants.PARAM_AGE);
+		String age = inputs.get(Constants.PARAM_AGE);// request.getParameter(Constants.PARAM_AGE);
 		boolean isTrainer = false;
-		boolean isMale = Boolean.parseBoolean(request.getParameter(Constants.PARAM_IS_MALE));
-		String height_sm = request.getParameter(Constants.PARAM_HEIGHT);
-		String weight = request.getParameter(Constants.PARAM_WEIGHT);
+		boolean isMale = Boolean.parseBoolean(inputs.get(Constants.PARAM_IS_MALE));// request.getParameter(Constants.PARAM_IS_MALE));
+		String height_sm = inputs.get(Constants.PARAM_HEIGHT);// request.getParameter(Constants.PARAM_HEIGHT);
+		String weight = inputs.get(Constants.PARAM_WEIGHT);// request.getParameter(Constants.PARAM_WEIGHT);
 		int idTrainers = 0;
-		String goal = request.getParameter(Constants.PARAM_GOAL);
+		String goal = inputs.get(Constants.PARAM_GOAL);// request.getParameter(Constants.PARAM_GOAL);
+
+		System.out.println(login);
+		System.out.println(password);
+		System.out.println(name);
+		System.out.println(secondName);
+		System.out.println(photo);
+		System.out.println(age);
+		System.out.println(isTrainer);
+		System.out.println(isMale);
+		System.out.println(height_sm);
+		System.out.println(weight);
+		System.out.println(idTrainers);
+		System.out.println(goal);
 
 		pupil.setLogin(login);
 		pupil.setPassword(password);
@@ -78,5 +97,4 @@ public class SignUpPupil implements Command {
 
 		return pupil;
 	}
-
 }

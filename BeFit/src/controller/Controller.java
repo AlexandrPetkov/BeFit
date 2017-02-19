@@ -1,11 +1,21 @@
 package controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import command.Command;
 import command.exception.CommandNotFoundException;
@@ -34,7 +44,13 @@ public class Controller extends HttpServlet {
 		CommandHelper provider = CommandHelper.getInstatnce();
 		Command command = null;
 		String page = null;
-		String commandName = request.getParameter(Constants.PARAM_COMMAND);
+		String commandName = null;
+
+		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+		if (isMultipart) {
+			commandName = getRequestParameters(request);
+		} else
+			commandName = request.getParameter(Constants.PARAM_COMMAND);
 
 		try {
 			command = provider.getCommand(commandName);
@@ -47,7 +63,66 @@ public class Controller extends HttpServlet {
 			page = Constants.PAGE_INDEX;
 		}
 
-		request.getRequestDispatcher(page).forward(request, response);
-
+		if (page.equals(Constants.PAGE_PREVIOUS)) {
+			response.sendRedirect(request.getHeader(Constants.PARAM_REFERER));
+		} else
+			request.getRequestDispatcher(page).forward(request, response);
 	}
+
+	/**
+	 * Get reuqest parameters with encoding = multipart создана.
+	 * 
+	 * @param item
+	 * @throws Exception
+	 * @return String commandName
+	 */
+	private String getRequestParameters(HttpServletRequest request) {
+		Map<String, String> inputs = new HashMap<>();
+		Random random = new Random();
+
+		DiskFileItemFactory factory = new DiskFileItemFactory();
+		factory.setSizeThreshold(1024 * 1024 * 20);
+
+		// creating temporary file
+		File tempDir = (File) request.getServletContext().getAttribute("javax.servlet.context.tempdir");
+		factory.setRepository(tempDir);
+
+		// creating uploader
+		ServletFileUpload upload = new ServletFileUpload(factory);
+		upload.setSizeMax(1024 * 1024 * 30);
+
+		try {
+			List items = upload.parseRequest(request);
+			Iterator iter = items.iterator();
+			File file = null;
+
+			while (iter.hasNext()) {
+				FileItem item = (FileItem) iter.next();
+
+				if (item.isFormField()) {
+					// if is input
+					inputs.put(item.getFieldName(), item.getString());
+				} else {
+					// if is file
+					String path = null;
+
+					do {
+						path = getServletContext().getRealPath("/") + Constants.PARAM_PHOTO + random.nextInt() + ".jpg";
+						file = new File(path);
+					} while (file.exists());
+
+					file.createNewFile();
+					item.write(file);
+					inputs.put(item.getFieldName(), path);
+				}
+			}
+		} catch (Exception e) {
+			// logger
+		}
+
+		request.setAttribute(Constants.PARAM_REQUEST_PARAMETER, (Object) inputs);
+
+		return inputs.get(Constants.PARAM_COMMAND);
+	}
+
 }

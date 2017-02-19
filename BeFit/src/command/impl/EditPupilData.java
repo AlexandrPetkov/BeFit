@@ -19,12 +19,11 @@ public class EditPupilData implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandNotFoundException {
 		HttpSession session = request.getSession();
-		String page = Constants.PAGE_PUPILS_CARD;
+		String page = Constants.PAGE_PREVIOUS;
 		Pupil pupil = null;
 		int id = Integer.parseInt(request.getParameter(Constants.PARAM_ID));
 
 		pupil = (Pupil) session.getAttribute(Constants.PARAM_USER);
-		System.out.println(pupil.getAge());
 
 		ServiceFactory factory = ServiceFactory.getInstance();
 		PupilService service = factory.getPupilService();
@@ -32,7 +31,6 @@ public class EditPupilData implements Command {
 		if (pupil.getId() != id) {
 
 			request.setAttribute(Constants.PARAM_ERROR_TEXT, Constants.CANT_EDIT_PUPIL_DATA);
-			request.setAttribute(Constants.PARAM_USER, pupil);
 
 			return page;
 		}
@@ -41,11 +39,9 @@ public class EditPupilData implements Command {
 
 		try {
 			service.editProfile(pupil);
-			request.setAttribute(Constants.PARAM_USER, pupil);
 		} catch (ServiceException e) {
 			// logger
 			request.setAttribute(Constants.PARAM_ERROR_TEXT, e.getMessage());
-			request.setAttribute(Constants.PARAM_USER, pupil);
 		}
 
 		return page;

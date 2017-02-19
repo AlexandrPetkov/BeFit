@@ -13,10 +13,11 @@ public class Constants {
 	public static final String PARAM_SECOND_NAME = "secondName";
 	public static final String PARAM_AGE = "age";
 	public static final String PARAM_IS_MALE = "isMale";
+	public static final String PARAM_IS_TRAINER = "isTrainer";
 	public static final String PARAM_HEIGHT = "height_sm";
 	public static final String PARAM_WEIGHT = "weight";
 	public static final String PARAM_GOAL = "goal";
-	public static final String PARAM_PHOTO = "assets/images/photo/";
+	public static final String PARAM_PHOTO = "photo";
 	public static final String PARAM_EXPERIENCE = "experience_years";
 	public static final String PARAM_SPECIALIZATION = "specialization";
 	public static final String PARAM_PRICE = "price";
@@ -26,9 +27,13 @@ public class Constants {
 	public static final String PARAM_USER = "user";
 	public static final String PARAM_USERS = "users";
 	public static final String PARAM_ID = "id";
-	public static final String PARAM_IS_TRAINER = "isTrainer";
 	public static final String PARAM_ID_TRAINER = "idTrainers";
 	public static final String PARAM_ID_PUPIL = "idPupils";
+	public static final String PARAM_REFERER = "referer";
+	public static final String PARAM_LOCALE = "local";
+	public static final String PARAM_REQUEST_PARAMETER = "requestParatemers";
+	public static final String PARAM_LOCALE_EN = "en";
+	public static final String PARAM_LOCALE_RU = "ru";
 
 	// commands
 	public static final String COMMAND_GO_TO_SIGN_IN = "GoToSignIn";
@@ -56,6 +61,7 @@ public class Constants {
 	public static final String PAGE_All_PUPILS = "/allPupils";
 	public static final String PAGE_PUPILS_CARD = "/pupilsCard";
 	public static final String PAGE_TRAINERS_CARD = "/trainersCard";
+	public static final String PAGE_PREVIOUS = "previousPage";
 
 	// DB parameters
 	public static final String DB_BUNDLE = "resources/DB";

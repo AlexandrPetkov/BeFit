@@ -102,7 +102,7 @@
 							<hr>
 							<p class="text-center text-muted" style="color: red">${requestScope.errorText}</p>
 
-							<form action="Controller" method="post">
+							<form action="Controller" method="post" enctype="multipart/form-data">
 							<input type="hidden" name="command" value="SignUpPupil">
 							<div class="row top-margin">
 								<div class="col-xs-6">
