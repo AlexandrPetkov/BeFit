@@ -100,6 +100,37 @@
 				'</div>'
 			);
 		}
+		
+		function setChangeUserAvatar() {
+			$(".userAvatar").replaceWith(
+				'<div class="changeAvatarBlock">' +
+					'<form action="Controller" method="post" enctype="multipart/form-data">' +
+						'<div class="row top-margin">' +
+							'<div class="col-md-12">' +
+								'<label>${photo}</label>' +
+								'<input type="file" class="btn-default" name="photo" class="form-control" style="width: 100%">' +
+							'</div>' +
+						'</div>' +
+						'<div class="row top-margin">' +
+							'<div class="col-md-6 text-left">' +
+								'<button class="btn" type="button" onclick="cancelPhotoEditing()">${cancel}</button>' +
+							'</div>' +
+							'<div class="col-md-6 text-right">' +
+								'<button class="btn btn-action" type="submit" name="command" value="EditUserPhoto">${ok}</button>' +
+							'</div>' +
+						'</div>' +			
+					'</form>' +
+				'</div>'
+			);
+		}
+		
+		function cancelPhotoEditing(){
+			$(".changeAvatarBlock").replaceWith(
+				'<div class="text-right top-margin userAvatar">' +
+					'<button class="btn" onclick="setChangeUserAvatar()">${edit}</button>' +
+				'</div>'
+			);
+		}
 	</script>
 	
 </head>
@@ -157,21 +188,22 @@
 			</header>
 			<div class="col-md-4 col-md-offset-1">
 				<div class="panel panel-default">
-					<div class="panel-body">
+					<div class="panel-body text-center">
 						<c:choose>
 							<c:when test="${not (user.photo eq 'no photo')}">
-								<a  href="Controller?command=goToUserCard&id=${user.id}&isTrainer=${user.isTrainer}"><img src="${user.photo}" alt="..." style="width: 100%"></a>
+								<a  href="Controller?command=goToUserCard&id=${user.id}&isTrainer=${user.isTrainer}"><img src="${user.photo}" alt="..." style="height: 260px"></a>
 							</c:when>
 							<c:otherwise>
 								<img src="http://placehold.it/260x180" alt="..." style="width: 100%">
 							</c:otherwise>
 						</c:choose>
+						
+						<c:if test="${sessionScope.user.id eq user.id}">
+							<div class="text-right top-margin userAvatar">
+								<button class="btn" onclick="setChangeUserAvatar()">${edit}</button>
+							</div>
+						</c:if>
 					</div>
-					<c:if test="${sessionScope.user.id eq user.id}">
-					<div class="panel-body text-right">
-						<button class="btn" type="submit">${edit}</button>
-					</div>
-					</c:if>
 				</div>
 			</div>
 			

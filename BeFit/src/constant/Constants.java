@@ -17,7 +17,7 @@ public class Constants {
 	public static final String PARAM_HEIGHT = "height_sm";
 	public static final String PARAM_WEIGHT = "weight";
 	public static final String PARAM_GOAL = "goal";
-	public static final String PARAM_PHOTO = "photo";
+	public static final String PARAM_USER_AVATAR = "assets/images/user/avatar/";
 	public static final String PARAM_EXPERIENCE = "experience_years";
 	public static final String PARAM_SPECIALIZATION = "specialization";
 	public static final String PARAM_PRICE = "price";

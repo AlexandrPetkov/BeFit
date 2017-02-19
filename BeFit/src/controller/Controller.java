@@ -107,7 +107,7 @@ public class Controller extends HttpServlet {
 					String path = null;
 
 					do {
-						path = getServletContext().getRealPath("/") + Constants.PARAM_PHOTO + random.nextInt() + ".jpg";
+						path = getServletContext().getRealPath("/") + Constants.PARAM_USER_AVATAR + random.nextInt() + ".jpg";
 						file = new File(path);
 					} while (file.exists());
 

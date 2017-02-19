@@ -70,7 +70,7 @@
 		<p class="text-center text-muted" style="color: red">${requestScope.errorText}</p>
 		<hr>
 		
-				<div class="row">
+	<div class="row">
 		<c:forEach var="user" items="${users}">
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">

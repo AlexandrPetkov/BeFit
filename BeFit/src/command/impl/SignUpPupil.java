@@ -59,7 +59,7 @@ public class SignUpPupil implements Command {
 		String name = inputs.get(Constants.PARAM_NAME);// request.getParameter(Constants.PARAM_NAME);
 		String secondName = inputs.get(Constants.PARAM_SECOND_NAME);// request.getParameter(Constants.PARAM_SECOND_NAME);
 
-		String photo = inputs.get(Constants.PARAM_PHOTO);
+		String photo = inputs.get(Constants.PARAM_USER_AVATAR);
 
 		String age = inputs.get(Constants.PARAM_AGE);// request.getParameter(Constants.PARAM_AGE);
 		boolean isTrainer = false;

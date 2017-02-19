@@ -55,7 +55,7 @@ public class SignUpTrainer implements Command {
 		String secondName = request.getParameter(Constants.PARAM_SECOND_NAME);
 
 		// доделать полноценную загрузку аватаров в систему
-		String photo = Constants.PARAM_PHOTO;
+		String photo = Constants.PARAM_USER_AVATAR;
 
 		String age = request.getParameter(Constants.PARAM_AGE);
 		boolean isTrainer = true;
