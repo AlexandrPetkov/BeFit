@@ -1,6 +1,8 @@
 package command.impl;
 
 import java.sql.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,12 +20,15 @@ public class SignUpTrainer implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandNotFoundException {
-		String page = null;
-		Trainer trainer = new Trainer();
-		String confPassword = request.getParameter(Constants.PARAM_PASSWORD_CONFIRMATION);
 		HttpSession session = request.getSession();
+		String page = null;
+		HashMap<String, String> inputs = null;
 
-		trainer = fillTrainer(request, response);
+		inputs = (HashMap<String, String>) request.getAttribute("requestParatemers");
+
+		Trainer trainer = fillTrainer(inputs);
+
+		String confPassword = inputs.get(Constants.PARAM_PASSWORD_CONFIRMATION);
 
 		ServiceFactory factory = ServiceFactory.getInstance();
 		TrainerService service = factory.getTrainerService();
@@ -37,6 +42,7 @@ public class SignUpTrainer implements Command {
 				page = Constants.PAGE_All_PUPILS;
 			} else {
 				page = Constants.PAGE_SIGN_UP_TRAINER;
+
 			}
 		} catch (ServiceException e) {
 			page = Constants.PAGE_SIGN_UP_TRAINER;
@@ -46,24 +52,26 @@ public class SignUpTrainer implements Command {
 		return page;
 	}
 
-	private Trainer fillTrainer(HttpServletRequest request, HttpServletResponse response) {
+	private Trainer fillTrainer(Map<String, String> inputs) {
 		Trainer trainer = new Trainer();
 
-		String login = request.getParameter(Constants.PARAM_LOGIN);
-		String password = request.getParameter(Constants.PARAM_PASSWORD);
-		String name = request.getParameter(Constants.PARAM_NAME);
-		String secondName = request.getParameter(Constants.PARAM_SECOND_NAME);
+		String login = inputs.get(Constants.PARAM_LOGIN);
+		String password = inputs.get(Constants.PARAM_PASSWORD);
+		String name = inputs.get(Constants.PARAM_NAME);
+		String secondName = inputs.get(Constants.PARAM_SECOND_NAME);
 
-		// доделать полноценную загрузку аватаров в систему
-		String photo = Constants.PARAM_USER_AVATAR;
+		String photo = inputs.get(Constants.PARAM_USER_PHOTO);
+		if (photo == null) {
+			photo = Constants.PARAM_USER_NO_PHOTO;
+		}
 
-		String age = request.getParameter(Constants.PARAM_AGE);
+		String age = inputs.get(Constants.PARAM_AGE);
 		boolean isTrainer = true;
-		boolean isMale = Boolean.parseBoolean(request.getParameter(Constants.PARAM_IS_MALE));
-		String experience_years = request.getParameter(Constants.PARAM_EXPERIENCE);
-		String specialization = request.getParameter(Constants.PARAM_SPECIALIZATION);
-		String price = request.getParameter(Constants.PARAM_PRICE);
-		String about = request.getParameter(Constants.PARAM_ABOUT);
+		boolean isMale = Boolean.parseBoolean(inputs.get(Constants.PARAM_IS_MALE));
+		String experience_years = inputs.get(Constants.PARAM_EXPERIENCE);
+		String specialization = inputs.get(Constants.PARAM_SPECIALIZATION);
+		String price = inputs.get(Constants.PARAM_PRICE);
+		String about = inputs.get(Constants.PARAM_ABOUT);
 
 		trainer.setLogin(login);
 		trainer.setPassword(password);

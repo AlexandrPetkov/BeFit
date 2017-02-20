@@ -102,7 +102,7 @@
 							<hr>
 							<p class="text-center text-muted" style="color: red">${requestScope.errorText}</p>
 
-							<form action="Controller" method="post">
+							<form action="Controller" method="post" enctype="multipart/form-data">
 							<input type="hidden" name="command" value="SignUpTrainer">
 								<div class="row top-margin">
 								<div class="col-sm-6">
@@ -148,7 +148,7 @@
 										</label>                   
 									</div>
 									<div class="col-md-4">
-										<label>${birthday}</span></label>
+										<label>${birthday}</label>
 										<input type="date" name="age" class="form-control">
 									</div>
 								</div>

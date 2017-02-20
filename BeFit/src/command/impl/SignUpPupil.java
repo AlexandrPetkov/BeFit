@@ -28,7 +28,7 @@ public class SignUpPupil implements Command {
 
 		Pupil pupil = fillPupil(inputs);
 
-		String confPassword = request.getParameter(Constants.PARAM_PASSWORD_CONFIRMATION);
+		String confPassword = inputs.get(Constants.PARAM_PASSWORD_CONFIRMATION);
 
 		ServiceFactory factory = ServiceFactory.getInstance();
 		PupilService service = factory.getPupilService();
@@ -54,33 +54,23 @@ public class SignUpPupil implements Command {
 	private Pupil fillPupil(Map<String, String> inputs) {
 		Pupil pupil = new Pupil();
 
-		String login = inputs.get(Constants.PARAM_LOGIN); // request.getParameter(Constants.PARAM_LOGIN);
-		String password = inputs.get(Constants.PARAM_PASSWORD);// request.getParameter(Constants.PARAM_PASSWORD);
-		String name = inputs.get(Constants.PARAM_NAME);// request.getParameter(Constants.PARAM_NAME);
-		String secondName = inputs.get(Constants.PARAM_SECOND_NAME);// request.getParameter(Constants.PARAM_SECOND_NAME);
+		String login = inputs.get(Constants.PARAM_LOGIN);
+		String password = inputs.get(Constants.PARAM_PASSWORD);
+		String name = inputs.get(Constants.PARAM_NAME);
+		String secondName = inputs.get(Constants.PARAM_SECOND_NAME);
 
-		String photo = inputs.get(Constants.PARAM_USER_AVATAR);
+		String photo = inputs.get(Constants.PARAM_USER_PHOTO);
+		if (photo == null) {
+			photo = Constants.PARAM_USER_NO_PHOTO;
+		}
 
-		String age = inputs.get(Constants.PARAM_AGE);// request.getParameter(Constants.PARAM_AGE);
+		String age = inputs.get(Constants.PARAM_AGE);
 		boolean isTrainer = false;
-		boolean isMale = Boolean.parseBoolean(inputs.get(Constants.PARAM_IS_MALE));// request.getParameter(Constants.PARAM_IS_MALE));
-		String height_sm = inputs.get(Constants.PARAM_HEIGHT);// request.getParameter(Constants.PARAM_HEIGHT);
-		String weight = inputs.get(Constants.PARAM_WEIGHT);// request.getParameter(Constants.PARAM_WEIGHT);
+		boolean isMale = Boolean.parseBoolean(inputs.get(Constants.PARAM_IS_MALE));
+		String height_sm = inputs.get(Constants.PARAM_HEIGHT);
+		String weight = inputs.get(Constants.PARAM_WEIGHT);
 		int idTrainers = 0;
-		String goal = inputs.get(Constants.PARAM_GOAL);// request.getParameter(Constants.PARAM_GOAL);
-
-		System.out.println(login);
-		System.out.println(password);
-		System.out.println(name);
-		System.out.println(secondName);
-		System.out.println(photo);
-		System.out.println(age);
-		System.out.println(isTrainer);
-		System.out.println(isMale);
-		System.out.println(height_sm);
-		System.out.println(weight);
-		System.out.println(idTrainers);
-		System.out.println(goal);
+		String goal = inputs.get(Constants.PARAM_GOAL);
 
 		pupil.setLogin(login);
 		pupil.setPassword(password);

@@ -17,7 +17,9 @@ public class Constants {
 	public static final String PARAM_HEIGHT = "height_sm";
 	public static final String PARAM_WEIGHT = "weight";
 	public static final String PARAM_GOAL = "goal";
-	public static final String PARAM_USER_AVATAR = "assets/images/user/avatar/";
+	public static final String PARAM_USER_AVATAR = "upload/user/avatar/";
+	public static final String PARAM_USER_PHOTO = "photo";
+	public static final String PARAM_USER_NO_PHOTO = "no photo";
 	public static final String PARAM_EXPERIENCE = "experience_years";
 	public static final String PARAM_SPECIALIZATION = "specialization";
 	public static final String PARAM_PRICE = "price";
@@ -102,4 +104,5 @@ public class Constants {
 	public static final String NOT_A_TRAINER = "Sorry, but we can't do this, cause you are not a trainer";
 	public static final String CANT_GO_TO_CABINET = "Sorry, didn't get to personal page((. Something wrong with user's id";
 	public static final String CANT_EDIT_PUPIL_DATA = "You haven't enough rights to change personal data of this pupil. But you can change your data";
+
 }

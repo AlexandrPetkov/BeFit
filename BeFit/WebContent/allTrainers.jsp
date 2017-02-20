@@ -105,7 +105,7 @@
 								</div>
 								<div class="col-sm-6 text-right">
 									<c:if test="${sessionScope.isLogged eq true}">
-										<c:if test="${not (sessionScope.isTrainer)}">
+										<c:if test="${sessionScope.isTrainer eq falseining}">
 											<c:if test="${not (sessionScope.user.idTrainers eq user.id)}">
 												<form>
 													<input type="hidden" name="command" value="HireTrainer">

@@ -46,6 +46,8 @@ public class Controller extends HttpServlet {
 		String page = null;
 		String commandName = null;
 
+		System.out.println(getServletContext().getRealPath("/"));
+
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 		if (isMultipart) {
 			commandName = getRequestParameters(request);
@@ -92,8 +94,8 @@ public class Controller extends HttpServlet {
 		upload.setSizeMax(1024 * 1024 * 30);
 
 		try {
-			List items = upload.parseRequest(request);
-			Iterator iter = items.iterator();
+			List<FileItem> items = upload.parseRequest(request);
+			Iterator<FileItem> iter = items.iterator();
 			File file = null;
 
 			while (iter.hasNext()) {
@@ -102,13 +104,14 @@ public class Controller extends HttpServlet {
 				if (item.isFormField()) {
 					// if is input
 					inputs.put(item.getFieldName(), item.getString());
-				} else {
+				} else if (item.getSize() != 0) {
 					// if is file
+					String fullPath = null;
 					String path = null;
-
 					do {
-						path = getServletContext().getRealPath("/") + Constants.PARAM_USER_AVATAR + random.nextInt() + ".jpg";
-						file = new File(path);
+						path = Constants.PARAM_USER_AVATAR + random.nextInt() + ".jpg";
+						fullPath = getServletContext().getRealPath("/") + path;
+						file = new File(fullPath);
 					} while (file.exists());
 
 					file.createNewFile();
@@ -118,6 +121,7 @@ public class Controller extends HttpServlet {
 			}
 		} catch (Exception e) {
 			// logger
+			e.printStackTrace();
 		}
 
 		request.setAttribute(Constants.PARAM_REQUEST_PARAMETER, (Object) inputs);

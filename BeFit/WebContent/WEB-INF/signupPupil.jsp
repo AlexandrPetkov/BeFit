@@ -135,7 +135,7 @@
 								<div class="row top-margin">
 								<div class="col-md-4">
 									<label>${photo}</label>
-									<input type="file" class="btn-default" name="photo" class="form-control">   
+									<input type="file" class="btn-default" name="photo" class="form-control" value="no photo">   
 								</div>
 									<div class="col-md-3 col-md-offset-1">
 										<label>${sex}<span class="text-danger">*</span><br>

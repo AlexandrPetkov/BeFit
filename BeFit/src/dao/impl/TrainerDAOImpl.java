@@ -198,7 +198,6 @@ public class TrainerDAOImpl implements TrainerDAO {
 		trainer.setPrice(rs.getString(5));
 		trainer.setAbout(rs.getString(6));
 		trainer.setLogin(rs.getString(8));
-		trainer.setPassword(rs.getString(9));
 		trainer.setName(rs.getString(10));
 		trainer.setSecondName(rs.getString(11));
 		trainer.setBirthday(rs.getDate(12));

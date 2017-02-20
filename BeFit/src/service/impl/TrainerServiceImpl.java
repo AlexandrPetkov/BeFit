@@ -1,6 +1,5 @@
 package service.impl;
 
-import java.util.Date;
 import java.util.List;
 
 import bean.Trainer;
@@ -26,10 +25,6 @@ public class TrainerServiceImpl implements TrainerService {
 
 		try {
 			trainer = trainerDAO.singUpTrainer(trainer);
-			Date date = new Date();
-			System.out.println(date.getYear());
-			System.out.println(trainer.getBirthday().getYear());
-			trainer.setAge(date.getYear() - trainer.getBirthday().getYear());
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 
