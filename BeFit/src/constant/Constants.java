@@ -51,7 +51,8 @@ public class Constants {
 	public static final String COMMAND_HIRE_TRAINER = "HireTrainer";
 	public static final String COMMAND_FIRE_TRAINER = "FireTrainer";
 	public static final String COMMAND_MAKE_OFFER = "MakeOffer";
-	public static final String EDIT_PUPIL_DATA = "EditPupilData";
+	public static final String COMMAND_EDIT_PUPIL_DATA = "EditPupilData";
+	public static final String COMMAND_CHANGE_PHOTO = "EditUserPhoto";
 
 	// pages
 	public static final String PAGE_INDEX = "/index";
@@ -88,6 +89,7 @@ public class Constants {
 	public static final String UPDATE_PUPIL_WITH_TRAINER = "UPDATE Pupils SET idTrainers=%d WHERE idUsers=%d";
 	public static final String UPDATE_USER = "UPDATE Users SET Name='%s', Second_name='%s', Age='%s' WHERE idUsers=%d";
 	public static final String UPDATE_PUPIL = "UPDATE Pupils SET Heigth_sm='%s', Weight='%s', goal='%s' WHERE idUsers=%d";
+	public static final String UPDATE_USER_PHOTO = "UPDATE Users SET Photo='%s' WHERE idUsers=%d";
 
 	// Exception messages
 	public static final String CONNECTION_POOL_IS_NULL = "Connection is null";
@@ -104,5 +106,6 @@ public class Constants {
 	public static final String NOT_A_TRAINER = "Sorry, but we can't do this, cause you are not a trainer";
 	public static final String CANT_GO_TO_CABINET = "Sorry, didn't get to personal page((. Something wrong with user's id";
 	public static final String CANT_EDIT_PUPIL_DATA = "You haven't enough rights to change personal data of this pupil. But you can change your data";
+	public static final String CANT_RENAME_PHOTO_FILE = "Exception while rewriting user photo file (can't rename new photo file with previous filename)";
 
 }

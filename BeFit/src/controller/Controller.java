@@ -46,13 +46,12 @@ public class Controller extends HttpServlet {
 		String page = null;
 		String commandName = null;
 
-		System.out.println(getServletContext().getRealPath("/"));
-
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 		if (isMultipart) {
 			commandName = getRequestParameters(request);
-		} else
+		} else {
 			commandName = request.getParameter(Constants.PARAM_COMMAND);
+		}
 
 		try {
 			command = provider.getCommand(commandName);
@@ -66,13 +65,14 @@ public class Controller extends HttpServlet {
 		}
 
 		if (page.equals(Constants.PAGE_PREVIOUS)) {
+
 			response.sendRedirect(request.getHeader(Constants.PARAM_REFERER));
 		} else
 			request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**
-	 * Get reuqest parameters with encoding = multipart создана.
+	 * Get reuqest parameters with encoding type multipart.
 	 * 
 	 * @param item
 	 * @throws Exception
@@ -102,7 +102,7 @@ public class Controller extends HttpServlet {
 				FileItem item = (FileItem) iter.next();
 
 				if (item.isFormField()) {
-					// if is input
+					// if is input field
 					inputs.put(item.getFieldName(), item.getString());
 				} else if (item.getSize() != 0) {
 					// if is file

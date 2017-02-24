@@ -105,6 +105,7 @@
 			$(".userAvatar").replaceWith(
 				'<div class="changeAvatarBlock">' +
 					'<form action="Controller" method="post" enctype="multipart/form-data">' +
+						'<input type="hidden" name="id" value="${user.id}">' +
 						'<div class="row top-margin">' +
 							'<div class="col-md-12">' +
 								'<label>${photo}</label>' +

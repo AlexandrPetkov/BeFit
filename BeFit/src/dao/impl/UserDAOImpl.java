@@ -95,6 +95,30 @@ public class UserDAOImpl implements UserDAO {
 		return user;
 	}
 
+	@Override
+	public void updatePhotoField(String newPhoto, int id) throws DAOException {
+		ConnectionPool connectionPool = ConnectionPool.getInstance();
+		Connection con = null;
+		Statement st = null;
+
+		try {
+			con = connectionPool.take();
+			st = con.createStatement();
+			st.executeUpdate(String.format(Constants.UPDATE_USER_PHOTO, newPhoto, id));
+
+		} catch (InterruptedException e) {
+			// logger
+			e.printStackTrace();
+			throw new DAOException(e);
+		} catch (SQLException e) {
+			// logger
+			e.printStackTrace();
+			throw new DAOException(e);
+		} finally {
+			CloseDAO.closeStatement(st);
+		}
+	}
+
 	private User fillUser(ResultSet rs) throws SQLException {
 		User user = new User();
 

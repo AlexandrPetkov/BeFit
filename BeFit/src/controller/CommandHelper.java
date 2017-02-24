@@ -6,6 +6,7 @@ import java.util.Map;
 import command.Command;
 import command.exception.CommandNotFoundException;
 import command.impl.EditPupilData;
+import command.impl.EditUserPhoto;
 import command.impl.FireTrainer;
 import command.impl.GoToSignIn;
 import command.impl.GoToSignUpPupil;
@@ -39,7 +40,8 @@ public class CommandHelper {
 		commands.put(Constants.COMMAND_HIRE_TRAINER, new HireTrainer());
 		commands.put(Constants.COMMAND_FIRE_TRAINER, new FireTrainer());
 		commands.put(Constants.COMMAND_MAKE_OFFER, new MakeOffer());
-		commands.put(Constants.EDIT_PUPIL_DATA, new EditPupilData());
+		commands.put(Constants.COMMAND_EDIT_PUPIL_DATA, new EditPupilData());
+		commands.put(Constants.COMMAND_CHANGE_PHOTO, new EditUserPhoto());
 	}
 
 	public static CommandHelper getInstatnce() {

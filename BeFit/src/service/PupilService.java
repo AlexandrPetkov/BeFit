@@ -13,4 +13,5 @@ public interface PupilService {
 	List<Pupil> getAllPupils() throws ServiceException;
 
 	void editProfile(Pupil pupil) throws ServiceException;
+
 }

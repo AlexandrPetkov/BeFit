@@ -24,7 +24,7 @@ public class SignUpPupil implements Command {
 		String page = null;
 		HashMap<String, String> inputs = null;
 
-		inputs = (HashMap<String, String>) request.getAttribute("requestParatemers");
+		inputs = (HashMap<String, String>) request.getAttribute(Constants.PARAM_REQUEST_PARAMETER);
 
 		Pupil pupil = fillPupil(inputs);
 
