@@ -35,13 +35,13 @@ public class PupilServiceImpl implements PupilService {
 	}
 
 	@Override
-	public List<Pupil> getAllPupils() throws ServiceException {
+	public List<Pupil> getPupilsByIdTrainers(int idTrainers) throws ServiceException {
 		List<Pupil> pupils = null;
 		DAOFactory daoFactory = DAOFactory.getInstance();
 		PupilDAO pupilDAO = daoFactory.getPupilDAO();
 
 		try {
-			pupils = pupilDAO.getAllPupils();
+			pupils = pupilDAO.getPupilsByIdTrainers(idTrainers);
 		} catch (DAOException e) {
 			// logger
 			throw new ServiceException(e);
@@ -55,8 +55,7 @@ public class PupilServiceImpl implements PupilService {
 
 		// тут будет валидация данных с формы регистрации ученика (дописать)
 		if (false) {
-			pupil = null;
-			throw new ServiceException(Constants.INCORRECT_REGISTRATION_DATA);
+			throw new ServiceException(Constants.INCORRECT_EDIT_DATA);
 		}
 
 		DAOFactory daoFactory = DAOFactory.getInstance();

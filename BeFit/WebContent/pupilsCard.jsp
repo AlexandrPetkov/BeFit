@@ -87,11 +87,11 @@
 						'</div>' +
 						'<div class="col-xs-3">' +
 							'<p><strong>${user.age}</strong> <small>${years}</small></p>' +
-							'<p><strong>${user.weight}</strong><small> ${weightKG}</small></p>' +
-							'<p><strong>${user.height_sm}</strong><small> ${heightSM}</small></p>' +
+							'<p><strong>${user.weight}</strong><small> ${kg}</small></p>' +
+							'<p><strong>${user.height_sm}</strong><small> ${sm}</small></p>' +
 						'</div>' +
 						'<div class="col-xs-6">' +
-							'<p>Цель: <strong>${user.goal}</strong></p>	' +
+							'<p>${goalText}: <strong>${user.goal}</strong></p>	' +
 						'</div>' +
 					'</div>' +
 					'<div class="text-right">' +
@@ -151,10 +151,9 @@
 					<li><a href="index.jsp">${home}</a></li>
 					<li><a href="Controller?command=ShowAllTrainers">${ourTrainers}</a></li>
 					<li><a href="Controller?command=ShowAllPupils">${ourPupils}</a></li>
-					<li><a href="contact.jsp">${contacts}</a></li>
 					
 					<c:if test="${sessionScope.isLogged eq true}">
-						<li <c:if test="${sessionScope.user.id eq user.id}">class="active"</c:if>><a href="Controller?command=goToUserCard&id=${sessionScope.user.id}">${cabinet}</a></li>
+						<li <c:if test="${sessionScope.user.id eq user.id}">class="active"</c:if>><a href="Controller?command=goToMyCard">${cabinet}</a></li>
 						<li><a class="btn" href="Controller?command=SignOut">${signOut}</a></li>
 					</c:if>
 					
@@ -174,11 +173,11 @@
 			<ol class="breadcrumb">
 			<li><a href="index.jsp">${home}</a></li>
 			<c:if test="${sessionScope.user.id eq user.id}">
-						<li class="active">${cabinet}</li>
-					</c:if>
+				<li class="active">${cabinet}</li>
+			</c:if>
 			<c:if test="${not (sessionScope.user.id eq user.id)}">
-						<li class="active">${user.name}'s card</li>
-					</c:if>
+				<li class="active">${user.name}'s card</li>
+			</c:if>
 		</ol>
 	<div class="row">
 			
@@ -187,12 +186,13 @@
 			<header class="page-header">
 				<h1 class="page-title">${user.name} ${user.secondName}</h1>
 			</header>
+			<p class="text-center text-muted" style="color: red">${requestScope.errorText}</p>
 			<div class="col-md-4 col-md-offset-1">
 				<div class="panel panel-default">
 					<div class="panel-body text-center">
 						<c:choose>
 							<c:when test="${not (user.photo eq 'no photo')}">
-								<a  href="Controller?command=goToUserCard&id=${user.id}&isTrainer=${user.isTrainer}"><img src="${user.photo}" alt="..." style="height: 260px"></a>
+								<img src="${user.photo}" alt="..." style="height: 260px">
 							</c:when>
 							<c:otherwise>
 								<img src="http://placehold.it/260x180" alt="..." style="width: 100%">
@@ -220,10 +220,9 @@
 									<p>${height}:</p>
 								</div>
 								<div class="col-xs-3">
-									<%-- <input type="number" size="5" name="age"  value="${user.age}" readonly> --%>
 									<p><strong>${user.age}</strong> <small>${years}</small></p>
-									<p><strong>${user.weight}</strong><small> ${weightKG}</small></p>
-									<p><strong>${user.height_sm}</strong><small> ${heightSM}</small></p>	
+									<p><strong>${user.weight}</strong><small> ${kg}</small></p>
+									<p><strong>${user.height_sm}</strong><small> ${sm}</small></p>	
 								</div>
 								<div class="col-xs-6">
 									<p>${goalText}: <strong>${user.goal}</strong></p>	
@@ -240,12 +239,49 @@
 				</div>
 			</div>		
 		</article>
-		<p class="text-center text-muted" style="color: red">${requestScope.errorText}</p>
 	</div>
 	<div>
 		<header class="page-header">
 				<h1 class="page-title">${trainingProgramm}</h1>
-			</header>
+		</header>
+		<div class="row">
+			<div class="col-sm-4 col-md-3">
+				<c:if test="${trainer ne null}">
+					<div class="thumbnail">
+						<div>
+							<c:choose>
+								<c:when test="${not (trainer.photo eq 'no photo')}">
+									<a href="Controller?command=goToUserCard&id=${trainer.id}&isTrainer=${trainer.isTrainer}" ><img src="${trainer.photo}" alt="..." style="height: 150px"></a>
+								</c:when>
+								<c:otherwise>
+									<a href="Controller?command=goToUserCard&id=${trainer.id}&isTrainer=${trainer.isTrainer}"><img src="http://placehold.it/250x180" alt="..." style="height: 150px"></a>
+								</c:otherwise>
+							</c:choose>
+						</div>
+						<div class="panel-body text-center">
+						<div>
+						<div class="row">
+							<h4>${trainer.name} ${trainer.secondName}</h4>
+							<div class="col-sm-12 ">
+								<label>${price}: <strong><a style="color: red">${trainer.price}</a></strong> <small>${perTraining}</small></label>
+							</div>
+						</div>
+						</div>
+							<hr>
+							<div >
+							<div class="text-right">
+								<form>
+									<input type="hidden" name="command" value="FireTrainer">
+									<input type="hidden" name="idTrainers" value="${user.id}">
+									<button class="btn btn-danger" type="submit">${fire}</button>
+								</form>
+							</div>
+							</div>
+						</div>
+					</div>
+				</c:if>
+			</div>			
+ 		</div>
 	</div>
 	
 	</div>

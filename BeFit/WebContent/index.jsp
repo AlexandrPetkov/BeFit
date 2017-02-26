@@ -43,11 +43,10 @@
 					<li><a class="btn" href="ChangeLocale">${changeLocaleButton}</a></li>
 					<li class="active"><a href="index.jsp">${home}</a></li>
 					<li><a href="Controller?command=ShowAllTrainers">${ourTrainers}</a></li>
-					<li><a href="Controller?command=ShowAllPupils">${ourPupils}</a></li>
-					<li><a href="contact.jsp">${contacts}</a></li>					
+					<li><a href="Controller?command=ShowAllPupils">${ourPupils}</a></li>				
 										
 					<c:if test="${sessionScope.isLogged eq true}">
-						<li><a href="Controller?command=goToUserCard&id=${sessionScope.user.id}&isTrainer=${sessionScope.user.isTrainer}">${cabinet}</a></li>
+						<li><a href="Controller?command=goToMyCard">${cabinet}</a></li>
 						<li><a class="btn" href="Controller?command=SignOut">${signOut}</a></li>
 					</c:if>
 					

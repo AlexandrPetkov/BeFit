@@ -23,7 +23,7 @@ public class Pupil extends User implements Serializable {
 		birthday = user.getBirthday();
 		age = user.getAge();
 		photo = user.getPhoto();
-		isTrainer = user.getisTrainer();
+		isTrainer = false;
 		isMale = user.isMale();
 	}
 

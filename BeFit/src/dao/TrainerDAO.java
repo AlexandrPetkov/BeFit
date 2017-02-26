@@ -14,7 +14,7 @@ public interface TrainerDAO {
 
 	void fireTrainer(int idUsers) throws DAOException;
 
-	public Trainer editProfile(Trainer trainer) throws DAOException;
+	void editProfile(Trainer trainer) throws DAOException;
 
-	public Trainer getTrainer(int id) throws DAOException;
+	Trainer getTrainer(int id) throws DAOException;
 }

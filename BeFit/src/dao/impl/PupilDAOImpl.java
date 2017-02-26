@@ -74,7 +74,7 @@ public class PupilDAOImpl implements PupilDAO {
 	}
 
 	@Override
-	public List<Pupil> getAllPupils() throws DAOException {
+	public List<Pupil> getPupilsByIdTrainers(int idTrainers) throws DAOException {
 		ConnectionPool connectionPool = ConnectionPool.getInstance();
 		Connection con = null;
 		Statement statement = null;
@@ -85,7 +85,7 @@ public class PupilDAOImpl implements PupilDAO {
 		try {
 			con = connectionPool.take();
 			statement = con.createStatement();
-			rs = statement.executeQuery(Constants.SELECT_ALL_PUPILS_WITHOUT_TRAINER);
+			rs = statement.executeQuery(String.format(Constants.SELECT_ALL_PUPILS_BY_ID_TRAINER, idTrainers));
 
 			while (rs.next()) {
 

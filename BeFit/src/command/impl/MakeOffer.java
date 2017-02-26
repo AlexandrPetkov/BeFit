@@ -54,7 +54,7 @@ public class MakeOffer implements Command {
 				return page;
 			}
 
-			pupils = pupilService.getAllPupils();
+			pupils = pupilService.getPupilsByIdTrainers(0);
 			request.setAttribute(Constants.PARAM_USERS, pupils);
 
 		} catch (ServiceException e) {

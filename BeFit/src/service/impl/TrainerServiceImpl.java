@@ -33,9 +33,22 @@ public class TrainerServiceImpl implements TrainerService {
 	}
 
 	@Override
-	public Trainer editProfile(Trainer trainer) throws ServiceException {
-		// TODO Auto-generated method stub
-		return null;
+	public void editProfile(Trainer trainer) throws ServiceException {
+		// тут будет валидация данных с формы регистрации ученика (дописать)
+		if (false) {
+			throw new ServiceException(Constants.INCORRECT_EDIT_DATA);
+		}
+
+		DAOFactory daoFactory = DAOFactory.getInstance();
+		TrainerDAO trainerDAO = daoFactory.getTrainerDAO();
+
+		try {
+			trainerDAO.editProfile(trainer);
+		} catch (DAOException e) {
+			// logger
+			throw new ServiceException(e);
+		}
+
 	}
 
 	@Override

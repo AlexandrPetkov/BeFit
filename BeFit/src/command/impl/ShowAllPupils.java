@@ -25,7 +25,7 @@ public class ShowAllPupils implements Command {
 		PupilService service = factory.getPupilService();
 
 		try {
-			pupils = service.getAllPupils();
+			pupils = service.getPupilsByIdTrainers(0);
 
 			if (pupils != null) {
 				request.setAttribute(Constants.PARAM_USERS, pupils);

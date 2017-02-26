@@ -44,10 +44,9 @@
 					<li><a href="index.jsp">${home}</a></li>
 					<li><a href="Controller?command=ShowAllTrainers">${ourTrainers}</a></li>
 					<li  class="active"><a href="Controller?command=ShowAllPupils">${ourPupils}</a></li>
-					<li><a href="contact.jsp">${contacts}</a></li>
 					
 					<c:if test="${sessionScope.isLogged eq true}">
-						<li><a href="Controller?command=goToUserCard&id=${sessionScope.user.id}">${cabinet}</a></li>
+						<li><a href="Controller?command=goToMyCard">${cabinet}</a></li>
 						<li><a class="btn" href="Controller?command=SignOut">${signOut}</a></li>
 					</c:if>
 					
@@ -72,14 +71,15 @@
 		
 	<div class="row">
 		<c:forEach var="user" items="${users}">
+		<c:if test="${user.id ne sessionScope.user.id}">
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
 				<c:choose>
-					<c:when test="${not (user.photo eq 'no photo')}">
-						<a  href="Controller?command=goToUserCard&id=${user.id}&isTrainer=${user.isTrainer}"><img src="${user.photo}" alt="..." style="height: 260px"></a>
+					<c:when test="${user.photo ne 'no photo'}">
+							<a href="Controller?command=goToUserCard&id=${user.id}&isTrainer=${user.isTrainer}"><img src="${user.photo}" alt="..." style="height: 250px"></a>
 					</c:when>
 					<c:otherwise>
-						<img src="http://placehold.it/260x260" alt="..." style="height: 260px">
+						<a href="Controller?command=goToUserCard&id=${user.id}&isTrainer=${user.isTrainer}"><img src="http://placehold.it/260x260" alt="..." style="height: 250px"></a>
 					</c:otherwise>
 				</c:choose>
 					<div class="caption">
@@ -120,6 +120,7 @@
 					</div>
 				</div>
 			</div>
+			</c:if>
 			</c:forEach>
   		</div>
    	</div>

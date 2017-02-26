@@ -26,7 +26,7 @@ public class Trainer extends User implements Serializable {
 		birthday = user.getBirthday();
 		age = user.getAge();
 		photo = user.getPhoto();
-		isTrainer = user.getisTrainer();
+		isTrainer = true;
 		isMale = user.isMale();
 	}
 

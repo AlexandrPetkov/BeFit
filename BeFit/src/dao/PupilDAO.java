@@ -8,7 +8,7 @@ import dao.exception.DAOException;
 public interface PupilDAO {
 	Pupil singUpPupil(Pupil pupil) throws DAOException;
 
-	List<Pupil> getAllPupils() throws DAOException;
+	List<Pupil> getPupilsByIdTrainers(int idTrainers) throws DAOException;
 
 	void editProfile(Pupil pupil) throws DAOException;
 

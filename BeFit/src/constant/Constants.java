@@ -28,6 +28,7 @@ public class Constants {
 	public static final String PARAM_ERROR_TEXT = "errorText";
 	public static final String PARAM_USER = "user";
 	public static final String PARAM_USERS = "users";
+	public static final String PARAM_TRAINER = "trainer";
 	public static final String PARAM_ID = "id";
 	public static final String PARAM_ID_TRAINER = "idTrainers";
 	public static final String PARAM_ID_PUPIL = "idPupils";
@@ -42,6 +43,7 @@ public class Constants {
 	public static final String COMMAND_GO_TO_SIGN_UP_PUPIL = "GoToSignUpPupil";
 	public static final String COMMAND_GO_TO_SIGN_UP_TRAINER = "GoToSignUpTrainer";
 	public static final String COMMAND_GO_TO_USER_CARD = "goToUserCard";
+	public static final String COMMAND_GO_TO_MY_CARD = "goToMyCard";
 	public static final String COMMAND_SIGN_IN = "SignIn";
 	public static final String COMMAND_SIGN_OUT = "SignOut";
 	public static final String COMMAND_SIGN_UP_PUPIL = "SignUpPupil";
@@ -52,6 +54,7 @@ public class Constants {
 	public static final String COMMAND_FIRE_TRAINER = "FireTrainer";
 	public static final String COMMAND_MAKE_OFFER = "MakeOffer";
 	public static final String COMMAND_EDIT_PUPIL_DATA = "EditPupilData";
+	public static final String COMMAND_EDIT_TRAINER_DATA = "EditTrainerData";
 	public static final String COMMAND_CHANGE_PHOTO = "EditUserPhoto";
 
 	// pages
@@ -78,7 +81,7 @@ public class Constants {
 	public static final String SELECT_USER_BY_LOGIN_AND_PASWORD = "SELECT * FROM Users WHERE Account = ? AND Password = ?";
 	public static final String SELECT_TRAINER_BY_ID = "SELECT * FROM Trainers, Users WHERE Users.idUsers = Trainers.idUsers AND Users.idUsers = ";
 	public static final String SELECT_PUPIL_BY_ID = "SELECT * FROM Pupils, Users WHERE Users.idUsers = Pupils.idUsers AND Users.idUsers = ";
-	public static final String SELECT_ALL_PUPILS_WITHOUT_TRAINER = "SELECT * FROM Pupils, Users Where Pupils.idTrainers = 0 AND Pupils.idUsers = Users.idUsers";
+	public static final String SELECT_ALL_PUPILS_BY_ID_TRAINER = "SELECT * FROM Pupils, Users Where Pupils.idTrainers = %d AND Pupils.idUsers = Users.idUsers";
 	public static final String SELECT_ALL_TRAINERS = "SELECT * FROM Trainers, Users Where Trainers.idUsers = Users.idUsers";
 
 	// DB queries (insert & update)
@@ -89,6 +92,7 @@ public class Constants {
 	public static final String UPDATE_PUPIL_WITH_TRAINER = "UPDATE Pupils SET idTrainers=%d WHERE idUsers=%d";
 	public static final String UPDATE_USER = "UPDATE Users SET Name='%s', Second_name='%s', Age='%s' WHERE idUsers=%d";
 	public static final String UPDATE_PUPIL = "UPDATE Pupils SET Heigth_sm='%s', Weight='%s', goal='%s' WHERE idUsers=%d";
+	public static final String UPDATE_TRAINER = "UPDATE Trainers SET Experience_years='%s', Specialization='%s', Price='%s', About='%s' WHERE idUsers=%d";
 	public static final String UPDATE_USER_PHOTO = "UPDATE Users SET Photo='%s' WHERE idUsers=%d";
 
 	// Exception messages
@@ -96,6 +100,7 @@ public class Constants {
 	public static final String NO_SUCH_USER = "incorrect email or password. Please, try again.";
 	public static final String NEED_TO_LOGIN = "Sorry, but you need to authorize first. Please, sign in.";
 	public static final String INCORRECT_REGISTRATION_DATA = "не получилось вас зарегистрировать. Что-то вы ввели неправильно, посмотрите, чтобы в полях были указаны корректные данные. Например в поле возраст было только число от 10 до 99 и т.д.";
+	public static final String INCORRECT_EDIT_DATA = "Some data is incorrect. Please, try again.";
 	public static final String EMPTY_LOGIN_OR_PASSWORD = "login or password is was empty. Please, try again";
 	public static final String SQL_EXCEPTION_MESSAGE = "Something wrong with DB: ";
 	public static final String INTERRUPTED_EXCEPTION_MESSAGE = "Something wrong with internet: ";
@@ -107,5 +112,6 @@ public class Constants {
 	public static final String CANT_GO_TO_CABINET = "Sorry, didn't get to personal page((. Something wrong with user's id";
 	public static final String CANT_EDIT_PUPIL_DATA = "You haven't enough rights to change personal data of this pupil. But you can change your data";
 	public static final String CANT_RENAME_PHOTO_FILE = "Exception while rewriting user photo file (can't rename new photo file with previous filename)";
+	public static final Object SESSION_IS_OVER = "Your session is over. Please, signIn again.";
 
 }

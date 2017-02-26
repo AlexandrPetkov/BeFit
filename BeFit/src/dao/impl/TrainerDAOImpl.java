@@ -71,9 +71,36 @@ public class TrainerDAOImpl implements TrainerDAO {
 	}
 
 	@Override
-	public Trainer editProfile(Trainer trainer) throws DAOException {
-		// TODO Auto-generated method stub
-		return null;
+	public void editProfile(Trainer trainer) throws DAOException {
+		ConnectionPool connectionPool = ConnectionPool.getInstance();
+		Connection con = null;
+		Statement st = null;
+
+		try {
+			con = connectionPool.take();
+			con.setAutoCommit(false);
+			st = con.createStatement();
+			st.executeUpdate(String.format(Constants.UPDATE_USER, trainer.getName(), trainer.getSecondName(), trainer.getBirthday(), trainer.getId()));
+
+			st.execute(String.format(Constants.UPDATE_TRAINER, trainer.getExperience_years(), trainer.getSpecialization(), trainer.getPrice(), trainer.getAbout(), trainer.getId()));
+			con.commit();
+
+			connectionPool.free(con);
+		} catch (InterruptedException e) {
+			// logger
+			throw new DAOException(e);
+		} catch (SQLException e) {
+			// logger
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// logger
+				throw new DAOException(e1);
+			}
+			throw new DAOException(e);
+		} finally {
+			CloseDAO.closeStatement(st);
+		}
 	}
 
 	@Override

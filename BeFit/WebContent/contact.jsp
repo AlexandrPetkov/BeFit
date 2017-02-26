@@ -45,7 +45,7 @@
 					<li class="active"><a href="contact.jsp">Contact</a></li>
 					
 					<c:if test="${sessionScope.isLogged eq true}">
-						<li><a href="Controller?command=goToUserCard&id=${sessionScope.user.id}">My cabinet</a></li>
+						<li><a href="Controller?command=goToMyCard">My cabinet</a></li>
 						<li><a class="btn" href="Controller?command=SignOut">SIGN OUT</a></li>
 					</c:if>
 					

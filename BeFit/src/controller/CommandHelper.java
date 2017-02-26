@@ -6,8 +6,10 @@ import java.util.Map;
 import command.Command;
 import command.exception.CommandNotFoundException;
 import command.impl.EditPupilData;
+import command.impl.EditTrainerData;
 import command.impl.EditUserPhoto;
 import command.impl.FireTrainer;
+import command.impl.GoToMyCard;
 import command.impl.GoToSignIn;
 import command.impl.GoToSignUpPupil;
 import command.impl.GoToSignUpTrainer;
@@ -31,6 +33,7 @@ public class CommandHelper {
 		commands.put(Constants.COMMAND_GO_TO_SIGN_UP_PUPIL, new GoToSignUpPupil());
 		commands.put(Constants.COMMAND_GO_TO_SIGN_UP_TRAINER, new GoToSignUpTrainer());
 		commands.put(Constants.COMMAND_GO_TO_USER_CARD, new GoToUserCard());
+		commands.put(Constants.COMMAND_GO_TO_MY_CARD, new GoToMyCard());
 		commands.put(Constants.COMMAND_SIGN_IN, new SignIn());
 		commands.put(Constants.COMMAND_SIGN_OUT, new SignOut());
 		commands.put(Constants.COMMAND_SIGN_UP_PUPIL, new SignUpPupil());
@@ -41,7 +44,9 @@ public class CommandHelper {
 		commands.put(Constants.COMMAND_FIRE_TRAINER, new FireTrainer());
 		commands.put(Constants.COMMAND_MAKE_OFFER, new MakeOffer());
 		commands.put(Constants.COMMAND_EDIT_PUPIL_DATA, new EditPupilData());
+		commands.put(Constants.COMMAND_EDIT_TRAINER_DATA, new EditTrainerData());
 		commands.put(Constants.COMMAND_CHANGE_PHOTO, new EditUserPhoto());
+
 	}
 
 	public static CommandHelper getInstatnce() {

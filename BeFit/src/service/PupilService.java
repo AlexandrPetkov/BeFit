@@ -10,7 +10,7 @@ public interface PupilService {
 
 	Pupil getPupil(int id) throws ServiceException;
 
-	List<Pupil> getAllPupils() throws ServiceException;
+	List<Pupil> getPupilsByIdTrainers(int idTrainers) throws ServiceException;
 
 	void editProfile(Pupil pupil) throws ServiceException;
 

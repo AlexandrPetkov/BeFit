@@ -18,7 +18,14 @@ public class EditUserPhoto implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandNotFoundException {
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
+
+		// if session is over, go to signIn page
+		if (session == null) {
+			request.setAttribute(Constants.PARAM_ERROR_TEXT, Constants.SESSION_IS_OVER);
+			return Constants.PAGE_SIGN_IN;
+		}
+
 		String page = Constants.PAGE_PREVIOUS;
 		HashMap<String, String> inputs = null;
 		User user = null;
@@ -29,21 +36,25 @@ public class EditUserPhoto implements Command {
 		inputs = (HashMap<String, String>) request.getAttribute(Constants.PARAM_REQUEST_PARAMETER);
 		id = Integer.parseInt(inputs.get(Constants.PARAM_ID));
 
-		if (user.getId() == id) {
-			ServiceFactory factory = ServiceFactory.getInstance();
-			UserService service = factory.getUserService();
+		if (user.getId() != id) {
 
-			try {
-				photo = service.changePhoto(inputs, user.getPhoto(), request.getServletContext().getRealPath("/"), id);
-
-				user.setPhoto(photo);
-			} catch (ServiceException e) {
-				// logger
-				// react on serviceException
-				e.printStackTrace();
-			}
-		} else {
 			request.setAttribute(Constants.PARAM_ERROR_TEXT, Constants.CANT_EDIT_PUPIL_DATA);
+
+			return page;
+		}
+
+		// executing request
+		ServiceFactory factory = ServiceFactory.getInstance();
+		UserService service = factory.getUserService();
+
+		try {
+			photo = service.changePhoto(inputs, user.getPhoto(), request.getServletContext().getRealPath("/"), id);
+
+			user.setPhoto(photo);
+		} catch (ServiceException e) {
+			// logger
+			// react on serviceException
+			e.printStackTrace();
 		}
 
 		return page;

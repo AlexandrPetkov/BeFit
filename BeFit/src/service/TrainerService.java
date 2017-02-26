@@ -12,7 +12,7 @@ public interface TrainerService {
 
 	List<Trainer> getAllTrainers() throws ServiceException;
 
-	Trainer editProfile(Trainer trainer) throws ServiceException;
+	void editProfile(Trainer trainer) throws ServiceException;
 
 	boolean hireTrainer(int idUsers, int idTrainers) throws ServiceException;
 

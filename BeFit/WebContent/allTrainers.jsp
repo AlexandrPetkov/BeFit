@@ -44,10 +44,9 @@
 					<li><a href="index.jsp">${home}</a></li>
 					<li  class="active"><a href="Controller?command=ShowAllTrainers">${ourTrainers}</a></li>
 					<li><a href="Controller?command=ShowAllPupils">${ourPupils}</a></li>
-					<li><a href="contact.jsp">${contacts}</a></li>
 					
 					<c:if test="${sessionScope.isLogged eq true}">
-						<li><a href="Controller?command=goToUserCard&id=${sessionScope.user.id}">${cabinet}</a></li>
+						<li><a href="Controller?command=goToMyCard">${cabinet}</a></li>
 						<li><a class="btn" href="Controller?command=SignOut">${signOut}</a></li>
 					</c:if>
 					
@@ -71,17 +70,20 @@
 		<hr>
 				<div class="row">
 		<c:forEach var="user" items="${users}">
+		<c:if test="${user.id ne sessionScope.user.id}">
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
+				<div>
 				<c:choose>
 					<c:when test="${not (user.photo eq 'no photo')}">
-						<a href="Controller?command=goToUserCard&id=${user.id}&isTrainer=${user.isTrainer}"><img src="${user.photo}" alt="..." style="height: 260px"></a>
+						<a href="Controller?command=goToUserCard&id=${user.id}&isTrainer=${user.isTrainer}" ><img src="${user.photo}" alt="..." style="height: 250px"></a>
 					</c:when>
 					<c:otherwise>
-						<img src="http://placehold.it/260x180" alt="..." style="width: 100%">
+						<a href="Controller?command=goToUserCard&id=${user.id}&isTrainer=${user.isTrainer}"><img src="http://placehold.it/250x180" alt="..." style="height: 250px"></a>
 					</c:otherwise>
 				</c:choose>
-					<div class="caption">
+				</div>
+					<div class="panel-body">
 						<h3 class="text-center">${user.name} ${user.secondName}</h3>
 						<p class="text-left text-muted"></p>
 						
@@ -105,7 +107,7 @@
 								</div>
 								<div class="col-sm-6 text-right">
 									<c:if test="${sessionScope.isLogged eq true}">
-										<c:if test="${sessionScope.isTrainer eq falseining}">
+										<c:if test="${sessionScope.isTrainer eq false}">
 											<c:if test="${not (sessionScope.user.idTrainers eq user.id)}">
 												<form>
 													<input type="hidden" name="command" value="HireTrainer">
@@ -127,6 +129,7 @@
 					</div>
 				</div>
 			</div>
+			</c:if>
 			</c:forEach>
   		</div>
  

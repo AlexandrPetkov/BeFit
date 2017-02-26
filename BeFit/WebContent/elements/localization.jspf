@@ -75,7 +75,7 @@
 	<fmt:message bundle="${loc}" key="error.text" var="error_text"/>
 	
 	<fmt:message bundle="${loc}" key="allUsers.ageText" var="age"/>
-	<fmt:message bundle="${loc}" key="allUsers.years" var="years"/>
+	<%-- <fmt:message bundle="${loc}" key="allUsers.years" var="years"/> --%>
 	
 	<fmt:message bundle="${loc}" key="allTrainers.header" var="allTrainers_header"/>
 	<fmt:message bundle="${loc}" key="allTrainers.standing" var="standing"/>
@@ -84,19 +84,27 @@
 	
 	<fmt:message bundle="${loc}" key="allPupils.header" var="allPupils_header"/>
 	<fmt:message bundle="${loc}" key="allPupils.weight" var="weight"/>
-	<fmt:message bundle="${loc}" key="allPupils.weightKG" var="weightKG"/>
+	<%-- <fmt:message bundle="${loc}" key="allPupils.weightKG" var="weightKG"/> --%>
 	<fmt:message bundle="${loc}" key="allPupils.height" var="height"/>
-	<fmt:message bundle="${loc}" key="allPupils.heightSM" var="heightSM"/>
+	<%-- <fmt:message bundle="${loc}" key="allPupils.heightSM" var="heightSM"/> --%>
 	<fmt:message bundle="${loc}" key="allPupils.goal" var="goalText"/>
+	
+	<fmt:message bundle="${loc}" key="measure.kg" var="kg"/>
+	<fmt:message bundle="${loc}" key="measure.sm" var="sm"/>
+	<fmt:message bundle="${loc}" key="measure.years" var="years"/>
 	
 	<fmt:message bundle="${loc}" key="btn.employ" var="employ"/>
 	<fmt:message bundle="${loc}" key="btn.fire" var="fire"/>
 	<fmt:message bundle="${loc}" key="btn.makeOffer" var="makeOffer"/>
+	<fmt:message bundle="${loc}" key="btn.writeTraining" var="writeTraining"/>
 	<fmt:message bundle="${loc}" key="btn.edit" var="edit"/>
 	<fmt:message bundle="${loc}" key="btn.ok" var="ok"/>
 	<fmt:message bundle="${loc}" key="btn.cancel" var="cancel"/>
 	
 	<fmt:message bundle="${loc}" key="pupilCard.personalDataText" var="personalData"/>
 	<fmt:message bundle="${loc}" key="pupilCard.trainingProgramText" var="trainingProgramm"/>
+	
+	<fmt:message bundle="${loc}" key="trainerCard.aboutMyself" var="aboutMyself"/>
+	<fmt:message bundle="${loc}" key="trainerCard.pupils" var="pupils"/>
 	
 </html>
