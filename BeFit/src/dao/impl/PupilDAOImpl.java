@@ -151,7 +151,6 @@ public class PupilDAOImpl implements PupilDAO {
 
 		Connection con = null;
 		Pupil pupil = null;
-
 		try {
 			con = connectionPool.take();
 			statement = con.createStatement();

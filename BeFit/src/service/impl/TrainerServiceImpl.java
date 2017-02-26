@@ -121,8 +121,6 @@ public class TrainerServiceImpl implements TrainerService {
 			} catch (DAOException e) {
 				throw new ServiceException(e.getMessage());
 			}
-		} else {
-			throw new ServiceException(Constants.CANT_GO_TO_CABINET);
 		}
 
 		return trainer;

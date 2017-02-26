@@ -258,9 +258,11 @@
 		<c:if test="${users eq '[]'}">
 			<div class="col-sm-4 col-md-3 text-center">
 				<h4>Нет подопечных</h4>
-				<form action="Controller" method="post">
-					<button name="command" class="btn btn-info" type="submit" value="ShowAllPupils">Найти учеников</button>
-				</form>
+				<c:if test="${sessionScope.user.id eq user.id}">
+					<form action="Controller" method="post">
+						<button name="command" class="btn btn-info" type="submit" value="ShowAllPupils">Найти учеников</button>
+					</form>
+				</c:if>
 			</div>
 		</c:if>
 		<c:forEach var="pupil" items="${users}">

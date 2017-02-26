@@ -246,6 +246,16 @@
 		</header>
 		<div class="row">
 			<div class="col-sm-4 col-md-3">
+				<c:if test="${trainer eq null}">
+					<div class="text-center">
+						<h4>Нет тренера</h4>
+						<c:if test="${sessionScope.user.id eq user.id}">
+						<form action="Controller" method="post">
+							<button name="command" class="btn btn-info" type="submit" value="ShowAllTrainers">Выбрать</button>
+						</form>
+						</c:if>
+					</div>
+				</c:if>
 				<c:if test="${trainer ne null}">
 					<div class="thumbnail">
 						<div>

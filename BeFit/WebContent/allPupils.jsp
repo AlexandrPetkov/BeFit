@@ -76,7 +76,7 @@
 				<div class="thumbnail">
 				<c:choose>
 					<c:when test="${user.photo ne 'no photo'}">
-							<a href="Controller?command=goToUserCard&id=${user.id}&isTrainer=${user.isTrainer}"><img src="${user.photo}" alt="..." style="height: 250px"></a>
+						<a href="Controller?command=goToUserCard&id=${user.id}&isTrainer=${user.isTrainer}"><img src="${user.photo}" alt="..." style="height: 250px"></a>
 					</c:when>
 					<c:otherwise>
 						<a href="Controller?command=goToUserCard&id=${user.id}&isTrainer=${user.isTrainer}"><img src="http://placehold.it/260x260" alt="..." style="height: 250px"></a>

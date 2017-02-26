@@ -72,7 +72,6 @@ public class PupilServiceImpl implements PupilService {
 	@Override
 	public Pupil getPupil(int id) throws ServiceException {
 		Pupil pupil = null;
-
 		if (id > 0) {
 			DAOFactory daoFactory = DAOFactory.getInstance();
 			PupilDAO pupilDAO = daoFactory.getPupilDAO();
@@ -85,6 +84,7 @@ public class PupilServiceImpl implements PupilService {
 			}
 		} else {
 			// logger
+			System.out.println("Else place is services");
 			throw new ServiceException(Constants.CANT_GO_TO_CABINET);
 		}
 		return pupil;
